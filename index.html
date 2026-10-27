@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reproducible numerical experiments on spherical turbulence, Rossby–Haurwitz waves, and the long-time coherence of the gravest accessible modes.">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>Spherical turbulence · Rossby–Haurwitz waves</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#" aria-label="Spherical turbulence home"><span class="mark" aria-hidden="true">◉</span> SPHERICAL TURBULENCE</a>
+    <nav aria-label="Main navigation"><a href="#experiments">Experiments</a><a href="#results">Results</a><a href="#reproduce">Reproduce</a><a class="nav-code" href="https://github.com/npizzo/sphere-rh">Project <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A numerical study on the sphere <span>01 / RESEARCH</span></p>
+        <h1 id="page-title">Turbulence on<br>a <em>sphere.</em></h1>
+        <p class="hero-lede">Rossby–Haurwitz waves, spectral condensation, and the long-time evolution of two-dimensional flow.</p>
+        <div class="hero-actions"><a class="button primary" href="#results">Explore the results <span aria-hidden="true">↓</span></a><a class="text-link" href="#experiments">The scientific question <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="sphere" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><clipPath id="sphere-clip"><circle cx="220" cy="220" r="177"/></clipPath><radialGradient id="sphere-shade" cx="0.32" cy="0.23" r="0.82"><stop stop-color="#d9e5f1"/><stop offset="0.6" stop-color="#c1d3e4"/><stop offset="1" stop-color="#8baac7"/></radialGradient></defs>
+          <path d="M220 13V427M13 220H427" stroke="#a4b5c2" stroke-width="1" stroke-dasharray="3 7"/>
+          <circle cx="220" cy="220" r="203" stroke="#b9c7cf" stroke-dasharray="2 8"/>
+          <circle cx="220" cy="220" r="177" fill="url(#sphere-shade)"/>
+          <g clip-path="url(#sphere-clip)" stroke="#2b5475" stroke-opacity="0.52" stroke-width="0.85" transform="rotate(-24 220 220)">
+            <ellipse cx="220" cy="220" rx="142" ry="177"/><ellipse cx="220" cy="220" rx="79" ry="177"/><path d="M220 43V397"/>
+            <ellipse cx="220" cy="220" rx="177" ry="58"/><ellipse cx="220" cy="220" rx="177" ry="116"/>
+            <path d="M-8 162Q220 252 448 162M-8 278Q220 188 448 278M3 105Q220 173 437 105M3 335Q220 267 437 335"/>
+          </g>
+          <circle cx="220" cy="220" r="177" stroke="#2b5475" stroke-width="1.2"/>
+          <path d="M54 94C104 41 204 8 309 56" stroke="#173f60" stroke-width="1.3"/><path d="M298 47L310 56L296 58" stroke="#173f60" stroke-width="1.3"/>
+          <circle cx="220" cy="43" r="4" fill="#173f60"/><circle cx="220" cy="397" r="3" fill="#173f60"/>
+        </svg>
+        <div class="diagram-note"><span>THE UNIT SPHERE</span><span>Euler · Navier–Stokes</span></div>
+      </div>
+    </section>
+
+    <section class="study-status wrap" aria-label="Study status">
+      <div><span class="status-dot" id="study-dot" aria-hidden="true"></span><span id="study-status">Validation in progress</span></div>
+      <p>Results appear only after a run has been analyzed.</p>
+      <span id="last-updated">Live research record</span>
+    </section>
+
+    <section class="section wrap" id="experiments" aria-labelledby="experiments-title">
+      <div class="section-heading"><p class="eyebrow">01 / EXPERIMENTS</p><h2 id="experiments-title">From an exact wave<br>to a turbulent end state.</h2><p>Revisit the benchmarks in Salmon &amp; Pizzo (2023), then follow the remaining motion of the large-scale pattern.</p></div>
+      <div class="experiment-grid">
+        <article class="experiment-card"><div class="card-top"><span class="experiment-number">01</span><span class="pill">FIGURE 5</span></div><h3>Does the wave<br>keep its shape?</h3><p>A degree-six harmonic pattern on a solid-body flow tests the exact Rossby–Haurwitz solution and the solver’s phase accuracy.</p><dl><div><dt>Harmonic degree</dt><dd><i>n</i> = 6</dd></div><div><dt>Background rotation</dt><dd>Ω = 50, about the <i>y</i> axis</dd></div><div><dt>Rotating-frame period</dt><dd>2.638937829</dd></div></dl><p class="card-foot">Track shape error, phase drift, and conserved quantities.</p></article>
+        <article class="experiment-card"><div class="card-top"><span class="experiment-number">02</span><span class="pill">FIGURE 6</span></div><h3>Where does<br>the energy go?</h3><p>Start with equal energy in degrees four, five, and six. Follow condensation into degree two and the evolution of its normalized coefficients.</p><dl><div><dt>Initial spectrum</dt><dd><i>E</i><sub>4</sub> = <i>E</i><sub>5</sub> = <i>E</i><sub>6</sub></dd></div><div><dt>Angular momentum</dt><dd>Zero</dd></div><div><dt>Reference dynamics</dt><dd>Inviscid</dd></div></dl><p class="card-foot">Report degree-two energy share and all five real coefficients.</p></article>
+        <article class="experiment-card question-card"><div class="card-top"><span class="experiment-number">03</span><span class="pill">LONG TIME</span></div><h3>Does the pattern<br>ever settle?</h3><p>Remove the predicted rotation and amplitude change. Compare profiles over intervals that grow with the age of the flow.</p><div class="equation" role="math" aria-label="D at waiting time t w and lag tau equals the norm of p tilde at t w plus tau minus p tilde at t w">D(t<sub>w</sub>, τ) = ‖p̃(t<sub>w</sub> + τ) − p̃(t<sub>w</sub>)‖</div><p class="card-foot">Distinguish persistent wandering from a coherent relative equilibrium.</p></article>
+      </div>
+      <aside class="fidelity-note"><span class="note-label">REPRODUCTION SCOPE</span><p>The original random realization is not specified. Seeded runs reproduce the Figure 6 protocol; they are not expected to trace the original coefficient curves point for point. Agreement is assessed through the stated initial conditions, conservation, spectra, and pattern evolution.</p></aside>
+    </section>
+
+    <section class="results-section" id="results" aria-labelledby="results-title"><div class="wrap">
+      <div class="results-heading"><div><p class="eyebrow">02 / RESULTS</p><h2 id="results-title">The evidence, run by run.</h2></div><a class="text-link" href="results.json" download>Download run manifest <span aria-hidden="true">↓</span></a></div>
+      <div class="results-filters" id="results-filters" role="group" aria-label="Filter runs" hidden></div>
+      <div id="results-content" aria-live="polite"><div class="empty-state"><span class="empty-symbol" aria-hidden="true">↻</span><div><h3>Validation in progress</h3><p>Published figures will be linked to their run settings and measured diagnostics. No simulation results have been posted yet.</p></div></div></div>
+      <noscript><p class="no-script">JavaScript is needed to display the run catalog. <a href="results.json">Read the run manifest directly.</a></p></noscript>
+    </div></section>
+
+    <section class="section wrap method-section" id="reproduce" aria-labelledby="reproduce-title"><div class="section-heading"><p class="eyebrow">03 / REPRODUCIBILITY</p><h2 id="reproduce-title">Keep the experiment<br>inspectable.</h2><p>Run settings and measured diagnostics accompany each result. Larger calculations are prepared for Unity; validation comes before performance claims.</p></div><div class="method-grid"><article><span class="method-index">A</span><h3>Preserve the source</h3><p>The supplied Fortran programs are preserved locally as the reference for the numerical method. The working solver and its source archive are maintained separately from this results page.</p></article><article><span class="method-index">B</span><h3>Record each run</h3><p>Grid size, time step, viscosity, initial condition, and random seed belong with every result. Compact binary output supports longer integrations.</p></article><article><span class="method-index">C</span><h3>Measure convergence</h3><p>Compare resolution, dissipation, and elapsed turnover times. Monitor energy and enstrophy alongside the evolution of the pattern.</p></article></div><div class="reproduce-links"><a class="button primary" href="https://github.com/npizzo/sphere-rh#readme">Read the project notes <span aria-hidden="true">↗</span></a><a class="text-link" href="#experiments">Experiment protocols <span aria-hidden="true">↗</span></a></div></section>
+
+    <section class="reference-section wrap" aria-labelledby="reference-title"><p class="eyebrow" id="reference-title">CONTEXT</p><div><p class="reference-title">An exact family, an open dynamical question.</p><p>Rotational symmetry allows every fixed-degree spherical-harmonic multiplet to evolve as a rigid pattern on a solid-body flow. This study asks how turbulent solutions approach that family, and whether their remaining motion disappears.</p><p class="reference-citation">Benchmarks: Salmon &amp; Pizzo (2023), Figures 5–6. Geometric comparison: Salmon &amp; Pizzo (2024), <cite>Two-dimensional turbulence on the ellipsoid</cite>.</p></div></section>
+  </main>
+
+  <footer class="site-footer wrap"><a class="wordmark" href="#"><span class="mark" aria-hidden="true">◉</span> SPHERICAL TURBULENCE</a><p>An open numerical research record.</p><a href="https://github.com/npizzo/sphere-rh">GitHub <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>

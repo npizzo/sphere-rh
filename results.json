@@ -1,0 +1,77 @@
+{
+  "updated_at": "2026-10-27T00:28:26.690079+00:00",
+  "status": "Unity simulations running \u00b7 first coarse pilot analyzed",
+  "runs": [
+    {
+      "id": "fig6-inviscid-ng24-s1",
+      "label": "Figure 6 protocol \u00b7 coarse-grid pilot",
+      "status": "completed",
+      "case": "fig6",
+      "ng": 24,
+      "seed": 1,
+      "t_final": 60,
+      "summary": "Unity pilot with initially equal discrete energy in degrees 4, 5 and 6. Degree-two energy grows to 88.9%, while its normalized coefficients keep changing. This coarse grid has 2.2% enstrophy drift and measurable degree-one leakage; it is a validation pilot, not a converged reproduction or evidence of an asymptotic state.",
+      "metrics": {
+        "degree_2": {
+          "label": "Final E\u2082/E",
+          "value": 0.8887063504685081
+        },
+        "energy": {
+          "label": "Maximum energy drift",
+          "value": 0.11227190044518406,
+          "unit": "%"
+        },
+        "enstrophy": {
+          "label": "Maximum enstrophy drift",
+          "value": 2.2150989342256664,
+          "unit": "%"
+        },
+        "degree_1": {
+          "label": "Final E\u2081/E",
+          "value": 0.0021499180792265977
+        }
+      },
+      "figures": [
+        {
+          "src": "fig6-inviscid-ng24-s1--figure6.png",
+          "alt": "Degree-two coefficients and energy fraction through time 60",
+          "caption": "Figure 6 quantities: normalized real coefficients and E\u2082/E for a new seeded realization."
+        },
+        {
+          "src": "fig6-inviscid-ng24-s1--coherence.png",
+          "alt": "Two-time degree-two pattern distances",
+          "caption": "Pattern distance at several waiting times. Finite observation windows do not establish eventual stationarity."
+        },
+        {
+          "src": "fig6-inviscid-ng24-s1--diagnostics.png",
+          "alt": "Energy, enstrophy, and angular momentum diagnostics",
+          "caption": "Numerical conservation and angular-momentum checks accompany every interpretation."
+        }
+      ],
+      "links": [
+        {
+          "href": "fig6-inviscid-ng24-s1--summary.json",
+          "label": "Measured summary and settings"
+        }
+      ]
+    },
+    {
+      "id": "fig5-ng48-s1",
+      "label": "Figure 5 protocol \u00b7 viscous and inviscid pair",
+      "status": "running",
+      "case": "fig5",
+      "ng": 48,
+      "seed": 1,
+      "summary": "Degree 6, rotation \u03a9=50 about the y axis, six snapshots through one predicted period. Independent Unity jobs; results pending."
+    },
+    {
+      "id": "extended-inviscid-ng24-s1",
+      "label": "Long-time extension \u00b7 coarse-grid control",
+      "status": "running",
+      "case": "long_time",
+      "ng": 24,
+      "seed": 1,
+      "summary": "Extends the inviscid protocol to t=600. Resolution and conservation limitations will be assessed before interpreting pattern coherence."
+    }
+  ]
+}
