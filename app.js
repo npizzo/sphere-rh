@@ -72,7 +72,7 @@
     card.append(heading);
     if (run.summary) card.append(element('p', 'run-summary', run.summary));
     const details = element('div', 'run-details');
-    for (const [key, label] of [['case', 'Case'], ['ng', 'Grid'], ['t_final', 'Final time'], ['seed', 'Seed']]) {
+    for (const [key, label] of [['case', 'Case'], ['ng', 'Grid NG'], ['t_final', 'Final time'], ['t_target', 'Target time'], ['seed', 'Seed'], ['cfl', 'Time-step factor']]) {
       if (run[key] !== undefined && run[key] !== null) {
         const item = element('span', '', label);
         item.append(element('strong', '', displayValue(run[key])));

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-27T00:59:32.972602+00:00",
-  "status": "Unity pilots completed \u00b7 paper-resolution validation in progress",
+  "updated_at": "2026-10-27T11:41:45.465331+00:00",
+  "status": "4 paper-resolution/refinement runs running \u00b7 3 controls queued \u00b7 hourly checks",
   "runs": [
     {
       "id": "fig5-ng48-s1",
@@ -171,6 +171,83 @@
           "label": "Measured summary and settings"
         }
       ]
+    },
+    {
+      "id": "fig5-inviscid-ng200-s1",
+      "label": "Figure 5 \u00b7 paper-resolution inviscid wave",
+      "status": "running",
+      "case": "fig5",
+      "ng": 200,
+      "seed": 1,
+      "t_target": 2.638937829015426,
+      "cfl": 0.1,
+      "summary": "Degree 6, \u03a9=50 about y, through one predicted period. NG200 has 241,882 degrees of freedom and equivalent harmonic cutoff 490.8, matching the paper\u2019s general grid size. Seeded realization; results pending."
+    },
+    {
+      "id": "fig5-legacy-ng200-s1",
+      "label": "Figure 5 \u00b7 paper-resolution legacy-viscous wave",
+      "status": "running",
+      "case": "fig5",
+      "ng": 200,
+      "seed": 1,
+      "t_target": 2.638937829015426,
+      "cfl": 0.1,
+      "summary": "Degree 6, \u03a9=50 about y, through one predicted period. NG200 has 241,882 degrees of freedom and equivalent harmonic cutoff 490.8, matching the paper\u2019s general grid size. Seeded realization; results pending."
+    },
+    {
+      "id": "fig6-inviscid-ng100-s1",
+      "label": "Figure 6 \u00b7 paper-resolution inviscid run",
+      "status": "running",
+      "case": "fig6",
+      "ng": 100,
+      "seed": 1,
+      "t_target": 60.0,
+      "cfl": 0.1,
+      "summary": "Initially equal discrete energy in degrees 4, 5, 6 and zero target angular momentum, with \u03a9=0. NG100 has 58,146 degrees of freedom and equivalent cutoff 240.1, matching Figure 6. Results pending."
+    },
+    {
+      "id": "fig6-inviscid-ng100-s1-halfdt",
+      "label": "Figure 6 \u00b7 paper-resolution half time-step control",
+      "status": "running",
+      "case": "fig6",
+      "ng": 100,
+      "seed": 1,
+      "t_target": 60.0,
+      "cfl": 0.05,
+      "summary": "Initially equal discrete energy in degrees 4, 5, 6 and zero target angular momentum, with \u03a9=0. NG100 has 58,146 degrees of freedom and equivalent cutoff 240.1, matching Figure 6. CFL is halved to assess time-integration error. Results pending."
+    },
+    {
+      "id": "long-inviscid-ng48-s1",
+      "label": "Long-time control \u00b7 baseline",
+      "status": "queued",
+      "case": "long_time",
+      "ng": 48,
+      "seed": 1,
+      "t_target": 200.0,
+      "cfl": 0.1,
+      "summary": "NG48 extension to t=200, scheduled after a primary run to limit concurrent jobs. Comparisons across time step and seed will assess the robustness of condensation and pattern persistence. These controls do not by themselves establish ensemble symmetry."
+    },
+    {
+      "id": "long-inviscid-ng48-s1-halfdt",
+      "label": "Long-time control \u00b7 half time step",
+      "status": "queued",
+      "case": "long_time",
+      "ng": 48,
+      "seed": 1,
+      "t_target": 200.0,
+      "cfl": 0.05,
+      "summary": "NG48 extension to t=200, scheduled after a primary run to limit concurrent jobs. Comparisons across time step and seed will assess the robustness of condensation and pattern persistence. These controls do not by themselves establish ensemble symmetry."
+    },
+    {
+      "id": "long-inviscid-ng48-s2",
+      "label": "Long-time control \u00b7 second seed",
+      "status": "queued",
+      "case": "long_time",
+      "ng": 48,
+      "seed": 2,
+      "t_target": 200.0,
+      "cfl": 0.1,
+      "summary": "NG48 extension to t=200, scheduled after a primary run to limit concurrent jobs. Comparisons across time step and seed will assess the robustness of condensation and pattern persistence. These controls do not by themselves establish ensemble symmetry."
     }
   ]
 }
