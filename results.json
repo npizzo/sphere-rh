@@ -1,7 +1,60 @@
 {
-  "updated_at": "2026-10-27T00:28:26.690079+00:00",
-  "status": "Unity simulations running \u00b7 first coarse pilot analyzed",
+  "updated_at": "2026-10-27T00:59:32.972602+00:00",
+  "status": "Unity pilots completed \u00b7 paper-resolution validation in progress",
   "runs": [
+    {
+      "id": "fig5-ng48-s1",
+      "label": "Figure 5 protocol \u00b7 coarse viscous and inviscid pair",
+      "status": "completed",
+      "case": "fig5",
+      "ng": 48,
+      "seed": 1,
+      "t_final": 2.638937829015426,
+      "summary": "Six snapshots through one prescribed Rossby\u2013Haurwitz period, with degree 6 and rotation \u03a9=50 about y. The upper row uses the original Laplacian viscosity; the lower row is inviscid. The inviscid field returns with an 11.6% shape error on this coarse grid. A separate end-point phase fit attributes most of the mismatch to a 0.43% cycle offset; plotted prescribed-speed errors remain unfitted. This tests the protocol, not convergence at the paper resolution.",
+      "metrics": {
+        "recurrence": {
+          "label": "Inviscid recurrence shape error",
+          "value": 11.613761842282443,
+          "unit": "%"
+        },
+        "phase": {
+          "label": "Separate fitted phase offset",
+          "value": 0.4267762041697722,
+          "unit": "% cycle"
+        },
+        "energy": {
+          "label": "Inviscid maximum energy drift",
+          "value": 0.00010028301173746433,
+          "unit": "%"
+        },
+        "pv": {
+          "label": "Inviscid PV-enstrophy budget drift",
+          "value": 0.00010260588516994789,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "fig5-ng48--figure5.png",
+          "alt": "Viscous and inviscid wave fields at six times",
+          "caption": "Top: legacy Laplacian viscosity. Bottom: inviscid. Columns span one predicted rotating-frame period; fixed color scale preserves the damping comparison."
+        }
+      ],
+      "links": [
+        {
+          "href": "fig5-ng48--summary.json",
+          "label": "Comparison measurements"
+        },
+        {
+          "href": "fig5-inviscid-ng48-s1--summary.json",
+          "label": "Inviscid run settings"
+        },
+        {
+          "href": "fig5-legacy-ng48-s1--summary.json",
+          "label": "Viscous run settings"
+        }
+      ]
+    },
     {
       "id": "fig6-inviscid-ng24-s1",
       "label": "Figure 6 protocol \u00b7 coarse-grid pilot",
@@ -43,6 +96,11 @@
           "caption": "Pattern distance at several waiting times. Finite observation windows do not establish eventual stationarity."
         },
         {
+          "src": "fig6-inviscid-ng24-s1--shape.png",
+          "alt": "Rotation-invariant degree-two shape distances",
+          "caption": "A separate shape comparison removes arbitrary rigid orientation using the degree-two tensor eigenvalues."
+        },
+        {
           "src": "fig6-inviscid-ng24-s1--diagnostics.png",
           "alt": "Energy, enstrophy, and angular momentum diagnostics",
           "caption": "Numerical conservation and angular-momentum checks accompany every interpretation."
@@ -56,22 +114,63 @@
       ]
     },
     {
-      "id": "fig5-ng48-s1",
-      "label": "Figure 5 protocol \u00b7 viscous and inviscid pair",
-      "status": "running",
-      "case": "fig5",
-      "ng": 48,
-      "seed": 1,
-      "summary": "Degree 6, rotation \u03a9=50 about the y axis, six snapshots through one predicted period. Independent Unity jobs; results pending."
-    },
-    {
       "id": "extended-inviscid-ng24-s1",
-      "label": "Long-time extension \u00b7 coarse-grid control",
-      "status": "running",
+      "label": "Long-time extension \u00b7 coarse-grid stress test",
+      "status": "completed",
       "case": "long_time",
       "ng": 24,
       "seed": 1,
-      "summary": "Extends the inviscid protocol to t=600. Resolution and conservation limitations will be assessed before interpreting pattern coherence."
+      "t_final": 600,
+      "summary": "Degree two retains 88.6% of the energy at t=600, but its normalized coefficients and its rotation-invariant shape keep changing. Persistence times do not grow monotonically across the sampled ages. Energy increases 1.17%, enstrophy increases 22.29%, and degree one acquires 2.31% of the energy. These numerical errors preclude a conclusion about a continuum end state or statistical symmetry restoration.",
+      "metrics": {
+        "degree2": {
+          "label": "Final E\u2082/E",
+          "value": 0.8861486629561082
+        },
+        "energy": {
+          "label": "Final energy increase",
+          "value": 1.1725503160854078,
+          "unit": "%"
+        },
+        "enstrophy": {
+          "label": "Final enstrophy increase",
+          "value": 22.291898165448476,
+          "unit": "%"
+        },
+        "degree1": {
+          "label": "Final E\u2081/E",
+          "value": 2.306864575851434,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "extended-inviscid-ng24-s1--figure6.png",
+          "alt": "Degree-two coefficients and energy share to time600",
+          "caption": "Energy condensation persists, while the five normalized degree-two coefficients continue to evolve."
+        },
+        {
+          "src": "extended-inviscid-ng24-s1--coherence.png",
+          "alt": "Pattern distances at multiple ages through time600",
+          "caption": "Raw normalized-profile distance at several waiting times. Short fixed-lag coherence alone is insufficient to establish settling."
+        },
+        {
+          "src": "extended-inviscid-ng24-s1--shape.png",
+          "alt": "Rotation-invariant degree-two shape distances through time600",
+          "caption": "Tensor eigenvalues distinguish changes of shape from rigid reorientation. Shape evolution is still present in this coarse calculation."
+        },
+        {
+          "src": "extended-inviscid-ng24-s1--diagnostics.png",
+          "alt": "Conservation errors in the coarse long-time run",
+          "caption": "The growing enstrophy and angular-momentum errors make this a numerical stress test, not a converged asymptotic result."
+        }
+      ],
+      "links": [
+        {
+          "href": "extended-inviscid-ng24-s1--summary.json",
+          "label": "Measured summary and settings"
+        }
+      ]
     }
   ]
 }

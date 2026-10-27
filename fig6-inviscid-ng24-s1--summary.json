@@ -119,6 +119,9 @@
   "final_urms": 1.0005612020283683,
   "max_relative_energy_change": 0.0011227190044518407,
   "max_relative_enstrophy_change": 0.022150989342256663,
+  "final_relative_energy_change": 0.001122719004451822,
+  "final_relative_enstrophy_change": 0.022150989342256677,
+  "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.022150989342256663,
   "max_angular_momentum_change": 0.4773747742128048,
   "max_absolute_circulation": 3.184837105412591e-14,
   "max_poisson_relative": 9.99337490442448e-09,
@@ -201,9 +204,63 @@
   "segments": [],
   "warnings": [
     "Degree-one leakage exceeds 0.1% of energy despite zero-momentum initialization; check angular momentum convergence before interpreting condensation.",
-    "The condensate is absent from the specified initial band; its initial projected energy is a numerical leakage reference."
+    "The condensate is absent from the specified initial band; its initial projected energy is a numerical leakage reference.",
+    "Inviscid PV-enstrophy changes by >1% of initial relative enstrophy; this run needs convergence checks."
   ],
   "initial_degree1_energy_fraction": 5.8036265101363195e-08,
   "final_degree1_energy_fraction": 0.0021499180792265977,
-  "max_degree1_energy_fraction": 0.0021499180792265977
+  "max_degree1_energy_fraction": 0.0021499180792265977,
+  "quadrupole_shape": {
+    "definition": "phi_2(r)=r^T Q r, trace(Q)=0; sorted eigenvalues normalized by the Frobenius norm of Q.",
+    "distance_definition": "Exact minimum normalized coefficient distance over SO(3); fixed-frame coherence is reported separately.",
+    "cubic_invariant_definition": "sqrt(6)*trace(Q^3)/trace(Q^2)^(3/2), in [-1,1].",
+    "final_normalized_eigenvalues": [
+      -0.6210860310167924,
+      -0.14846581507861584,
+      0.7695518460954085
+    ],
+    "final_cubic_invariant": 0.5214503853260728,
+    "coherence": [
+      {
+        "waiting_time": 0.1,
+        "max_observed_lag": 59.9,
+        "max_orbit_distance": 0.6070988562418016,
+        "final_orbit_distance": 0.03130099567036352,
+        "final_fixed_frame_distance": 1.6943698910743592,
+        "orbit_distance_at_one_age": 0.07225560981870065
+      },
+      {
+        "waiting_time": 12.099999999999973,
+        "max_observed_lag": 47.90000000000003,
+        "max_orbit_distance": 0.12945841437821648,
+        "final_orbit_distance": 0.08620838076013639,
+        "final_fixed_frame_distance": 1.1886922071635717,
+        "orbit_distance_at_one_age": 0.010378305710080244
+      },
+      {
+        "waiting_time": 24.100000000000072,
+        "max_observed_lag": 35.89999999999993,
+        "max_orbit_distance": 0.12005465800694287,
+        "final_orbit_distance": 0.07557863115293055,
+        "final_fixed_frame_distance": 1.036294371953637,
+        "orbit_distance_at_one_age": 0.016677143730794423
+      },
+      {
+        "waiting_time": 36.10000000000024,
+        "max_observed_lag": 23.899999999999757,
+        "max_orbit_distance": 0.1327245348242194,
+        "final_orbit_distance": 0.061476578005098405,
+        "final_fixed_frame_distance": 0.6054790529335892,
+        "orbit_distance_at_one_age": null
+      },
+      {
+        "waiting_time": 48.10000000000041,
+        "max_observed_lag": 11.899999999999586,
+        "max_orbit_distance": 0.09397182731826931,
+        "final_orbit_distance": 0.09397182731826931,
+        "final_fixed_frame_distance": 0.33653763342311777,
+        "orbit_distance_at_one_age": null
+      }
+    ]
+  }
 }

@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "run": "fig5-legacy-ng48-s1",
+  "metadata": {
+    "actual_ng": 48,
+    "build": {
+      "binary_sha256": "92b98fe48540027a72b2512e12a609f499e007c159079c8d5e288b6e0e5170cd",
+      "compiler": {
+        "name": "gfortran",
+        "version": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      },
+      "fingerprint": "8110d4ccd6c32214",
+      "fixed_source_flags": [
+        "-ffixed-line-length-none"
+      ],
+      "flags": [
+        "-cpp",
+        "-DGRID_NG=48",
+        "-fdefault-real-8",
+        "-fdefault-double-8",
+        "-std=legacy",
+        "-O3"
+      ],
+      "free_source_flags": [
+        "-ffree-line-length-none"
+      ],
+      "provenance": "built_from_recorded_sources"
+    },
+    "case": "fig5",
+    "case_name": "fig5_legacy_viscous",
+    "checkpoint_sha256": "d763c877863bb662de3d32dab98254980451d500bb4501d46571b61354d8e6a5",
+    "config_file": "config.nml",
+    "config_sha256": "c00117e770684265c7e26fc9f3f0df194a53e33d8b0e3c9b3a6db188291d72a4",
+    "created_at": "2026-10-27T00:27:46+00:00",
+    "execution": {
+      "architecture": "x86_64",
+      "cpus_requested": "1",
+      "environment": "slurm",
+      "host_sha256": "290161c0f228bc50",
+      "os": "Linux",
+      "slurm_array_task_id": null,
+      "slurm_job_id": "66167318"
+    },
+    "finished_at": "2026-10-27T00:35:30+00:00",
+    "frame": "rotating",
+    "id": "fig5-legacy-ng48-s1",
+    "initial_realization": "Seeded protocol realization; original paper realization not asserted.",
+    "label": "fig5_legacy_viscous \u00b7 ng=48",
+    "ng": 48,
+    "omega": 50.0,
+    "parameters": {
+      "axis": "y",
+      "case_name": "fig5_legacy_viscous",
+      "cfl": 0.1,
+      "checkpoint_interval": 0.5,
+      "diag_interval": 0.02,
+      "diag_nmax": 8,
+      "equal_shell_energy": true,
+      "max_steps": 10000000,
+      "nhi": 6,
+      "nlo": 6,
+      "omega": 50.0,
+      "poisson_tol": 1e-08,
+      "remove_initial_l1": true,
+      "restart_file": "",
+      "rotation_cfl": 1.0,
+      "seed": 1,
+      "snapshot_interval": 0.5277875658030852,
+      "sor_batch": 20,
+      "sor_max": 12000,
+      "target_degree": 6,
+      "tstop": 2.638937829015426,
+      "visc_factor": 1.0,
+      "visc_fixed": -1.0,
+      "viscosity_mode": "legacy"
+    },
+    "restart": null,
+    "returncode": 0,
+    "rh_speed_in_recorded_frame": -2.380952380952381,
+    "rotation_axis": "y",
+    "schema_version": 1,
+    "seed": 1,
+    "solver_status": {
+      "cpu_seconds": 461.506093,
+      "sor_sweeps": 4575240,
+      "step": 5810,
+      "stop_reason": "tstop",
+      "time": 2.638937829015426,
+      "turnover_time": 2.247520696809578
+    },
+    "source_sha256": {
+      "Makefile": "df06553cd4f45df14961ebea288592aa511c196395e7261327948b4b38259ab8",
+      "original/mg1.f": "502d00902d31b7e7c5065ca3dd66cebe20539ae957a601de2d79fad75a01b166",
+      "original/mg2.f": "6f2a2ca1549e2376a5c13ef8cace8561b78516b3867f851f4de1c44d40b016bc",
+      "original/mg3.f": "37af9874e5314e7af55c5740bfea872711e2c116c7c5af6dd8ea7ff93b89f42d",
+      "scripts/run.py": "6945d6a2fea3e0578564b1b8331da62d02a1830d0b5c55ecb3c557484558a89b",
+      "src/grid.inc": "c0c77e299e2d21610a31491e6fab382115a7b58eaf7222a42264c82c39208ba3",
+      "src/main.f90": "276225ffa45b605791d8f317f2d329c1c511ed30ec541cbfd3dbf2d9cc5a1e74",
+      "src/mg_core.f": "83e5de217643fbe5cda674b17e8b57bab9a7d3c314777f6584b2576000352f3c",
+      "src/research_io.f90": "e4573629e1591a5604dbe99edc1e4ed6c57de28dd6d4ae9755fa96e525e05faf"
+    },
+    "started_at": "2026-10-27T00:27:49+00:00",
+    "status": "completed",
+    "target_degree": 6,
+    "viscosity_operator": "legacy_laplacian",
+    "wall_seconds": 464.64160221396014
+  },
+  "assessment": "Measured finite-duration run; does not establish asymptotic stationarity.",
+  "records": 133,
+  "first_time": 0.0,
+  "last_time": 2.638937829015426,
+  "last_step": 5810,
+  "turnover_age_integral_urms_dt": 2.247522850494664,
+  "degree": 6,
+  "initial_degree_energy_fraction": 1.0039225223961867,
+  "final_degree_energy_fraction": 1.0038373236744107,
+  "max_degree_energy_fraction": 1.005220614245142,
+  "initial_urms": 0.9999999999999968,
+  "final_urms": 0.731240028903859,
+  "max_relative_energy_change": 0.4652880201286801,
+  "max_relative_enstrophy_change": 0.4652565664407921,
+  "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.4654453892560303,
+  "max_angular_momentum_change": 0.0028568206324893794,
+  "max_absolute_circulation": 0.0004667993727151585,
+  "max_poisson_relative": 9.944224637588659e-09,
+  "demodulation_speed": -2.380952380952381,
+  "demodulation_axis": [
+    0.0,
+    1.0,
+    0.0
+  ],
+  "coherence_energy_fraction_floor": 1e-06,
+  "initial_leakage_reference_fraction": 0.0,
+  "coherence_resolved_samples": 133,
+  "coherence": [
+    {
+      "waiting_time": 0.0,
+      "sample_count": 133,
+      "max_observed_lag": 2.638937829015426,
+      "max_distance": 0.11459385833158442,
+      "final_distance": 0.11459385833158442,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": null,
+      "exit_time_right_censored": true,
+      "observed_coherence_lower_bound": 2.638937829015426,
+      "max_lag_to_age": null,
+      "distance_at_one_age": null
+    },
+    {
+      "waiting_time": 0.5400000000000001,
+      "sample_count": 106,
+      "max_observed_lag": 2.098937829015426,
+      "max_distance": 0.0911679438256967,
+      "final_distance": 0.0911679438256967,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": null,
+      "exit_time_right_censored": true,
+      "observed_coherence_lower_bound": 2.098937829015426,
+      "max_lag_to_age": 3.886921905584121,
+      "distance_at_one_age": 0.02439189834561904
+    },
+    {
+      "waiting_time": 1.0600000000000005,
+      "sample_count": 80,
+      "max_observed_lag": 1.5789378290154255,
+      "max_distance": 0.0677695800517537,
+      "final_distance": 0.0677695800517537,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": null,
+      "exit_time_right_censored": true,
+      "observed_coherence_lower_bound": 1.5789378290154255,
+      "max_lag_to_age": 1.489563989637193,
+      "distance_at_one_age": 0.045260589793352395
+    },
+    {
+      "waiting_time": 1.600000000000001,
+      "sample_count": 53,
+      "max_observed_lag": 1.038937829015425,
+      "max_distance": 0.04515389622308313,
+      "final_distance": 0.04515389622308313,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": null,
+      "exit_time_right_censored": true,
+      "observed_coherence_lower_bound": 1.038937829015425,
+      "max_lag_to_age": 0.6493361431346402,
+      "distance_at_one_age": null
+    },
+    {
+      "waiting_time": 2.1200000000000014,
+      "sample_count": 27,
+      "max_observed_lag": 0.5189378290154245,
+      "max_distance": 0.022656523985347836,
+      "final_distance": 0.022656523985347836,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": null,
+      "exit_time_right_censored": true,
+      "observed_coherence_lower_bound": 0.5189378290154245,
+      "max_lag_to_age": 0.2447819948185963,
+      "distance_at_one_age": null
+    }
+  ],
+  "segments": [],
+  "warnings": [
+    "Demodulation uses prescribed background rotation; an additional degree-one relative flow is not fitted."
+  ],
+  "initial_degree1_energy_fraction": 4.615334049665744e-13,
+  "final_degree1_energy_fraction": 4.22389987045094e-09,
+  "max_degree1_energy_fraction": 8.653421723887055e-08,
+  "snapshot_panels": [
+    {
+      "run": "fig5-legacy-ng48-s1",
+      "snapshot_times": [
+        0.0,
+        0.5277875658030852,
+        1.0555751316061703,
+        1.5833626974092554,
+        2.1111502632123407,
+        2.638937829015426
+      ],
+      "grid_area": 12.56487063417636
+    },
+    {
+      "run": "fig5-inviscid-ng48-s1",
+      "snapshot_times": [
+        0.0,
+        0.5277875658030852,
+        1.0555751316061703,
+        1.5833626974092554,
+        2.1111502632123407,
+        2.638937829015426
+      ],
+      "grid_area": 12.56487063417636
+    }
+  ],
+  "rh_validation": [
+    {
+      "run": "fig5-legacy-ng48-s1",
+      "available": true,
+      "degree": 6,
+      "predicted_speed": -2.380952380952381,
+      "period": 2.6389378290154264,
+      "samples": [
+        {
+          "time": 0.0,
+          "relative_shape_error": 0.0017501549033341727,
+          "amplitude_projection": 0.9960926329321821
+        },
+        {
+          "time": 0.5277875658030852,
+          "relative_shape_error": 0.02425506081759439,
+          "amplitude_projection": 0.92710899213023
+        },
+        {
+          "time": 1.0555751316061703,
+          "relative_shape_error": 0.04782341185705466,
+          "amplitude_projection": 0.8676483619292379
+        },
+        {
+          "time": 1.5833626974092554,
+          "relative_shape_error": 0.06995973775886441,
+          "amplitude_projection": 0.8137324393719875
+        },
+        {
+          "time": 2.1111502632123407,
+          "relative_shape_error": 0.09212404003570779,
+          "amplitude_projection": 0.7662706969409789
+        },
+        {
+          "time": 2.638937829015426,
+          "relative_shape_error": 0.11490381213514082,
+          "amplitude_projection": 0.7235808403728698
+        }
+      ],
+      "first_period_recurrence": {
+        "time": 2.638937829015426,
+        "time_offset_from_exact_period": -4.440892098500626e-16,
+        "relative_shape_error_to_initial_grid_field": 0.11474205257820781,
+        "amplitude_projection": 0.7264317870790993
+      },
+      "separate_constant_phase_fit": {
+        "method": "A single end-point angular offset is fitted separately; prescribed-speed errors and coherence are unchanged.",
+        "phase_identifiable": true,
+        "phase_offset_radians": 0.026987086194980137,
+        "phase_offset_cycles": 0.004295128167578138,
+        "inferred_mean_speed_near_predicted": -2.37072588531529,
+        "prescribed_speed_coefficient_distance": 0.11459385833158442,
+        "coefficient_distance_after_constant_phase_fit": 0.012654583518898647
+      },
+      "observed_rotation_periods": 0.9999999999999998
+    },
+    {
+      "run": "fig5-inviscid-ng48-s1",
+      "available": true,
+      "degree": 6,
+      "predicted_speed": -2.380952380952381,
+      "period": 2.6389378290154264,
+      "samples": [
+        {
+          "time": 0.0,
+          "relative_shape_error": 0.0017501549033341727,
+          "amplitude_projection": 0.9960926329321821,
+          "expected_amplitude_constant_viscosity": 1.0
+        },
+        {
+          "time": 0.5277875658030852,
+          "relative_shape_error": 0.026377658894398658,
+          "amplitude_projection": 0.9952095340012123,
+          "expected_amplitude_constant_viscosity": 1.0
+        },
+        {
+          "time": 1.0555751316061703,
+          "relative_shape_error": 0.05014318070576413,
+          "amplitude_projection": 0.9951418515864862,
+          "expected_amplitude_constant_viscosity": 1.0
+        },
+        {
+          "time": 1.5833626974092554,
+          "relative_shape_error": 0.07202143132559674,
+          "amplitude_projection": 0.993153624793225,
+          "expected_amplitude_constant_viscosity": 1.0
+        },
+        {
+          "time": 2.1111502632123407,
+          "relative_shape_error": 0.09382917304804284,
+          "amplitude_projection": 0.9915661788021578,
+          "expected_amplitude_constant_viscosity": 1.0
+        },
+        {
+          "time": 2.638937829015426,
+          "relative_shape_error": 0.11630423270168468,
+          "amplitude_projection": 0.9895992005818736,
+          "expected_amplitude_constant_viscosity": 1.0
+        }
+      ],
+      "first_period_recurrence": {
+        "time": 2.638937829015426,
+        "time_offset_from_exact_period": -4.440892098500626e-16,
+        "relative_shape_error_to_initial_grid_field": 0.11613761842282443,
+        "amplitude_projection": 0.9934990757641531
+      },
+      "separate_constant_phase_fit": {
+        "method": "A single end-point angular offset is fitted separately; prescribed-speed errors and coherence are unchanged.",
+        "phase_identifiable": true,
+        "phase_offset_radians": 0.02681513975493388,
+        "phase_offset_cycles": 0.004267762041697722,
+        "inferred_mean_speed_near_predicted": -2.3707910427578627,
+        "prescribed_speed_coefficient_distance": 0.11382808070990842,
+        "coefficient_distance_after_constant_phase_fit": 0.012623264870308699
+      },
+      "observed_rotation_periods": 0.9999999999999998
+    }
+  ]
+}

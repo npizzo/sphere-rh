@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "run": "extended-inviscid-ng24-s1",
+  "metadata": {
+    "actual_ng": 24,
+    "build": {
+      "binary_sha256": "b0839b3122f0edf1dd48c497b7bd25bc6739257628d94d462cc97ebd7e20458d",
+      "compiler": {
+        "name": "gfortran",
+        "version": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      },
+      "fingerprint": "1aa46a583900351d",
+      "fixed_source_flags": [
+        "-ffixed-line-length-none"
+      ],
+      "flags": [
+        "-cpp",
+        "-DGRID_NG=24",
+        "-fdefault-real-8",
+        "-fdefault-double-8",
+        "-std=legacy",
+        "-O3"
+      ],
+      "free_source_flags": [
+        "-ffree-line-length-none"
+      ],
+      "provenance": "built_from_recorded_sources"
+    },
+    "case": "long_time",
+    "case_name": "extended_inviscid",
+    "checkpoint_sha256": "dc2d3184423b8df3a64ab2ee421e1afbdf4cc5770c7aeac4568660e61b95bee7",
+    "config_file": "config.nml",
+    "config_sha256": "7884ad466060b246c2864e4433f18690f646dedd37d722761f942fd3115b7ff6",
+    "created_at": "2026-10-27T00:27:46+00:00",
+    "execution": {
+      "architecture": "x86_64",
+      "cpus_requested": "1",
+      "environment": "slurm",
+      "host_sha256": "fb59f5ba81baee47",
+      "os": "Linux",
+      "slurm_array_task_id": null,
+      "slurm_job_id": "66167319"
+    },
+    "finished_at": "2026-10-27T00:46:36+00:00",
+    "frame": "rotating",
+    "id": "extended-inviscid-ng24-s1",
+    "initial_realization": "Seeded protocol realization; original paper realization not asserted.",
+    "label": "extended_inviscid \u00b7 ng=24",
+    "ng": 24,
+    "omega": 0.0,
+    "parameters": {
+      "axis": "z",
+      "case_name": "extended_inviscid",
+      "cfl": 0.1,
+      "checkpoint_interval": 5.0,
+      "diag_interval": 0.5,
+      "diag_nmax": 8,
+      "equal_shell_energy": true,
+      "max_steps": 10000000,
+      "nhi": 6,
+      "nlo": 4,
+      "omega": 0.0,
+      "poisson_tol": 1e-08,
+      "remove_initial_l1": true,
+      "restart_file": "",
+      "rotation_cfl": 1.0,
+      "seed": 1,
+      "snapshot_interval": 60.0,
+      "sor_batch": 20,
+      "sor_max": 12000,
+      "target_degree": 2,
+      "tstop": 600.0,
+      "visc_factor": 1.0,
+      "visc_fixed": -1.0,
+      "viscosity_mode": "none"
+    },
+    "restart": null,
+    "returncode": 0,
+    "rh_speed_in_recorded_frame": -0.0,
+    "rotation_axis": "z",
+    "schema_version": 1,
+    "seed": 1,
+    "solver_status": {
+      "cpu_seconds": 1129.610794,
+      "sor_sweeps": 43400720,
+      "step": 121200,
+      "stop_reason": "tstop",
+      "time": 600.0,
+      "turnover_time": 601.6706793973415
+    },
+    "source_sha256": {
+      "Makefile": "df06553cd4f45df14961ebea288592aa511c196395e7261327948b4b38259ab8",
+      "original/mg1.f": "502d00902d31b7e7c5065ca3dd66cebe20539ae957a601de2d79fad75a01b166",
+      "original/mg2.f": "6f2a2ca1549e2376a5c13ef8cace8561b78516b3867f851f4de1c44d40b016bc",
+      "original/mg3.f": "37af9874e5314e7af55c5740bfea872711e2c116c7c5af6dd8ea7ff93b89f42d",
+      "scripts/run.py": "6945d6a2fea3e0578564b1b8331da62d02a1830d0b5c55ecb3c557484558a89b",
+      "src/grid.inc": "c0c77e299e2d21610a31491e6fab382115a7b58eaf7222a42264c82c39208ba3",
+      "src/main.f90": "276225ffa45b605791d8f317f2d329c1c511ed30ec541cbfd3dbf2d9cc5a1e74",
+      "src/mg_core.f": "83e5de217643fbe5cda674b17e8b57bab9a7d3c314777f6584b2576000352f3c",
+      "src/research_io.f90": "e4573629e1591a5604dbe99edc1e4ed6c57de28dd6d4ae9755fa96e525e05faf"
+    },
+    "started_at": "2026-10-27T00:27:46+00:00",
+    "status": "completed",
+    "target_degree": 2,
+    "viscosity_operator": "none",
+    "wall_seconds": 1129.8802019720897
+  },
+  "assessment": "Measured finite-duration run; does not establish asymptotic stationarity.",
+  "records": 1201,
+  "first_time": 0.0,
+  "last_time": 600.0,
+  "last_step": 121200,
+  "turnover_age_integral_urms_dt": 601.6706761020448,
+  "degree": 2,
+  "initial_degree_energy_fraction": 5.219601000979129e-06,
+  "final_degree_energy_fraction": 0.8861486629561082,
+  "max_degree_energy_fraction": 0.9117005053743209,
+  "initial_urms": 1.0000000000000007,
+  "final_urms": 1.0058456656768253,
+  "max_relative_energy_change": 0.011725503160854078,
+  "max_relative_enstrophy_change": 0.2229189816544848,
+  "final_relative_energy_change": 0.011725503160854078,
+  "final_relative_enstrophy_change": 0.22291898165448476,
+  "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.2229189816544848,
+  "max_angular_momentum_change": 1.568171836688094,
+  "max_absolute_circulation": 2.6971046923618403e-14,
+  "max_poisson_relative": 9.991813409337317e-09,
+  "demodulation_speed": -0.0,
+  "demodulation_axis": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "coherence_energy_fraction_floor": 5.219601000979129e-05,
+  "initial_leakage_reference_fraction": 5.219601000979129e-06,
+  "coherence_resolved_samples": 1200,
+  "coherence": [
+    {
+      "waiting_time": 0.5,
+      "sample_count": 1200,
+      "max_observed_lag": 599.5,
+      "max_distance": 1.974296313657178,
+      "final_distance": 0.9167466881297263,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.5,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 1199.0,
+      "distance_at_one_age": 0.5969926129626528
+    },
+    {
+      "waiting_time": 120.5,
+      "sample_count": 960,
+      "max_observed_lag": 479.5,
+      "max_distance": 1.954087242645363,
+      "final_distance": 1.2831911677387016,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 3.0,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 3.979253112033195,
+      "distance_at_one_age": 1.5709787229683345
+    },
+    {
+      "waiting_time": 240.5,
+      "sample_count": 720,
+      "max_observed_lag": 359.5,
+      "max_distance": 1.8848915512903133,
+      "final_distance": 1.190375906452189,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 4.0,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 1.4948024948024947,
+      "distance_at_one_age": 1.8480325423037394
+    },
+    {
+      "waiting_time": 360.5,
+      "sample_count": 480,
+      "max_observed_lag": 239.5,
+      "max_distance": 1.910644986983102,
+      "final_distance": 1.8493483673593023,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 7.0,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 0.6643550624133149,
+      "distance_at_one_age": null
+    },
+    {
+      "waiting_time": 480.5,
+      "sample_count": 240,
+      "max_observed_lag": 119.5,
+      "max_distance": 1.6767978166053468,
+      "final_distance": 1.5364143486512638,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 3.5,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 0.24869927159209157,
+      "distance_at_one_age": null
+    }
+  ],
+  "segments": [],
+  "warnings": [
+    "Degree-one leakage exceeds 0.1% of energy despite zero-momentum initialization; check angular momentum convergence before interpreting condensation.",
+    "The condensate is absent from the specified initial band; its initial projected energy is a numerical leakage reference.",
+    "Inviscid energy changes by >1%; this run needs convergence checks.",
+    "Inviscid PV-enstrophy changes by >1% of initial relative enstrophy; this run needs convergence checks."
+  ],
+  "initial_degree1_energy_fraction": 5.8036265101363195e-08,
+  "final_degree1_energy_fraction": 0.02306864575851434,
+  "max_degree1_energy_fraction": 0.02306864575851434,
+  "quadrupole_shape": {
+    "definition": "phi_2(r)=r^T Q r, trace(Q)=0; sorted eigenvalues normalized by the Frobenius norm of Q.",
+    "distance_definition": "Exact minimum normalized coefficient distance over SO(3); fixed-frame coherence is reported separately.",
+    "cubic_invariant_definition": "sqrt(6)*trace(Q^3)/trace(Q^2)^(3/2), in [-1,1].",
+    "final_normalized_eigenvalues": [
+      -0.6507334653674408,
+      -0.10172748149877307,
+      0.7524609468662136
+    ],
+    "final_cubic_invariant": 0.36603471751216093,
+    "coherence": [
+      {
+        "waiting_time": 0.5,
+        "max_observed_lag": 599.5,
+        "max_orbit_distance": 0.6815319535105757,
+        "final_orbit_distance": 0.2983187114892292,
+        "final_fixed_frame_distance": 0.9167466881297263,
+        "orbit_distance_at_one_age": 0.0797821927867415
+      },
+      {
+        "waiting_time": 120.5,
+        "max_observed_lag": 479.5,
+        "max_orbit_distance": 0.43868681892913797,
+        "final_orbit_distance": 0.046251848256386674,
+        "final_fixed_frame_distance": 1.2831911677387016,
+        "orbit_distance_at_one_age": 0.12178344026301274
+      },
+      {
+        "waiting_time": 240.5,
+        "max_observed_lag": 359.5,
+        "max_orbit_distance": 0.3083763519557692,
+        "final_orbit_distance": 0.0863885215137381,
+        "final_fixed_frame_distance": 1.190375906452189,
+        "orbit_distance_at_one_age": 0.17302455395680688
+      },
+      {
+        "waiting_time": 360.5,
+        "max_observed_lag": 239.5,
+        "max_orbit_distance": 0.4100899093928172,
+        "final_orbit_distance": 0.220737928705732,
+        "final_fixed_frame_distance": 1.8493483673593023,
+        "orbit_distance_at_one_age": null
+      },
+      {
+        "waiting_time": 480.5,
+        "max_observed_lag": 119.5,
+        "max_orbit_distance": 0.47040312240324994,
+        "final_orbit_distance": 0.282077508321781,
+        "final_fixed_frame_distance": 1.5364143486512638,
+        "orbit_distance_at_one_age": null
+      }
+    ]
+  }
+}
