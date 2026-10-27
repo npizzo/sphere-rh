@@ -1,0 +1,53 @@
+{
+  "scope": "Only P2 psi; no fitted rotation. Each profile is compared with its own initial moving-frame coefficients. Separate cross-solver comparisons retain the initial discrete inversion/projection offset.",
+  "omega": 3.0,
+  "recorded_frame": "rotating",
+  "prescribed_speed": -1.0,
+  "inertial_speed": 2.0,
+  "duration": 6.283185307179586,
+  "runs": [
+    {
+      "run": "shared-rh2-fortran-ng48-r2",
+      "label": "Fortran NG48",
+      "max_relative_profile_change": 0.018315678296774544,
+      "final_relative_profile_change": 0.018315678296774544,
+      "final_amplitude_ratio": 1.000005344033288,
+      "max_relative_energy_drift": 2.603694581996521e-07,
+      "max_relative_pv_enstrophy_drift": 2.5575712012413632e-06,
+      "max_inertial_angular_momentum_change": 0.004731375084541614,
+      "requested_coefficient_sha256": "53c857104362655287b9cf6c3f5b921131f028dbc202e860683fda4ad35ce93c",
+      "applied_coefficient_sha256": "95aa0c1a90486fe39b284c3bbbbc1eacd3a8d5e95fa980a2f6efefb5e70120cc",
+      "discrete_compatibility_constant": 9.601589324206247e-07
+    },
+    {
+      "run": "shared-rh2-fortran-ng100-r2",
+      "label": "Fortran NG100",
+      "max_relative_profile_change": 0.006783245021379254,
+      "final_relative_profile_change": 0.006783245021379254,
+      "final_amplitude_ratio": 1.000000841141651,
+      "max_relative_energy_drift": 2.5080066146994767e-08,
+      "max_relative_pv_enstrophy_drift": 9.063302561831252e-07,
+      "max_inertial_angular_momentum_change": 0.0015587368906978124,
+      "requested_coefficient_sha256": "53c857104362655287b9cf6c3f5b921131f028dbc202e860683fda4ad35ce93c",
+      "applied_coefficient_sha256": "cc86a17ef3b5f52bd9ccea253d1194c663a83e374a623111e7e5c8ac8aafdf0d",
+      "discrete_compatibility_constant": 2.642188494702605e-08
+    },
+    {
+      "run": "shared-rh2-jax-l15",
+      "label": "Harmonic JAX L15",
+      "max_relative_profile_change": 1.2728759623207096e-14,
+      "final_relative_profile_change": 1.2728759623207096e-14,
+      "final_amplitude_ratio": 0.9999999999999875,
+      "max_relative_energy_drift": 2.558579543755096e-14,
+      "max_relative_pv_enstrophy_drift": 2.563291476616523e-14,
+      "max_inertial_angular_momentum_change": 1.82875744738885e-16,
+      "requested_coefficient_sha256": "53c857104362655287b9cf6c3f5b921131f028dbc202e860683fda4ad35ce93c",
+      "applied_coefficient_sha256": "53c857104362655287b9cf6c3f5b921131f028dbc202e860683fda4ad35ce93c",
+      "discrete_compatibility_constant": 0.0
+    }
+  ],
+  "warnings": [
+    "Matching requested initial harmonics do not imply identical sampled or inverted discrete fields. Fortran mean compatibility corrections are recorded.",
+    "The exact-wave control validates implementation and the moving-frame test; it does not demonstrate attraction from turbulence."
+  ]
+}

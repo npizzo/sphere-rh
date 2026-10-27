@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "run": "shared-mixed456-jax-gpu-l127-halfdt",
+  "metadata": {
+    "schema_version": 1,
+    "id": "shared-mixed456-jax-gpu-l127-halfdt",
+    "label": "Independent jax Galerkin \u00b7 L=127",
+    "case": "shared_mixed456",
+    "status": "completed",
+    "created_at": "2026-10-27T13:14:41.335921+00:00",
+    "method": "dealiased_spherical_harmonic_galerkin",
+    "frame": "rotating",
+    "rotation_axis": "z",
+    "omega": 3.0,
+    "target_degree": 2,
+    "spectral_L": 127,
+    "degrees_of_freedom": 16383,
+    "quadrature": {
+      "nlat": 191,
+      "nlon": 382,
+      "quadratic_dealiasing": true
+    },
+    "time_integrator": "integrating_factor_RK4",
+    "parameters": {
+      "L": 127,
+      "omega": 3.0,
+      "axis": "z",
+      "dt": 0.0005,
+      "tstop": 10.0,
+      "diag_interval": 0.1,
+      "snapshot_interval": 2.0,
+      "backend": "jax",
+      "nu": 0.0,
+      "viscosity": "laplacian_plus_2",
+      "target_degree": 2,
+      "nlo": 4,
+      "nhi": 6,
+      "diag_nmax": 127
+    },
+    "initialization": {
+      "field": "relative_vorticity",
+      "nmax": 6,
+      "basis": "real_orthonormal_condon_shortley",
+      "dropped_c00": 0.0,
+      "coefficient_source": "shared_file",
+      "normalization_factor": 1.0,
+      "coefficient_sha256": "79f1c7fb85b6ec06cc54270ce8a85229e799974b7f946289132f7f6a43845634",
+      "applied_coefficient_sha256": "79f1c7fb85b6ec06cc54270ce8a85229e799974b7f946289132f7f6a43845634"
+    },
+    "coordinate_conventions": {
+      "diag.bin": "Real streamfunction coefficients in physical axes",
+      "initial.json": "Real vorticity coefficients in physical axes",
+      "spectral_snapshots.npz": "Complex relative-vorticity coefficients in internal coordinates with z aligned to rotation_axis",
+      "checkpoint.npz": "Complex relative-vorticity coefficients in internal coordinates with z aligned to rotation_axis"
+    },
+    "source_sha256": {
+      "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+      "spectral/run.py": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+      "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+      "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+    },
+    "execution": {
+      "python": "3.12.3",
+      "numpy": "2.5.4",
+      "platform": "Linux",
+      "architecture": "x86_64",
+      "cpu_count_requested": "2",
+      "jax": "0.12.0.1",
+      "jaxlib": "0.12.0.1",
+      "jax_enable_x64": true,
+      "devices": [
+        {
+          "platform": "gpu",
+          "kind": "NVIDIA A100-SXM4-80GB"
+        }
+      ]
+    },
+    "limitations": [
+      "Harmonic Galerkin preserves quadratic invariants before time discretization, not all Euler Casimirs.",
+      "IFRK4 has finite time-integration error; compare step sizes.",
+      "Truncation L and stereographic grid NG are different discretizations; equality of labels or run times is not resolution equivalence."
+    ],
+    "finished_at": "2026-10-27T13:15:18.520992+00:00",
+    "solver_status": {
+      "stop_reason": "tstop",
+      "step": 20000,
+      "time": 10.0,
+      "turnover_time": 9.999999996465577,
+      "wall_seconds": 37.181766488123685,
+      "compile_first_advance_seconds": 8.233652436174452,
+      "warm_advance_seconds": 22.355240067001432
+    }
+  },
+  "assessment": "Measured finite-duration run; does not establish asymptotic freezing of P2 psi in the prescribed RH frame.",
+  "records": 101,
+  "first_time": 0.0,
+  "last_time": 10.0,
+  "last_step": 20000,
+  "turnover_age_integral_urms_dt": 9.999999996465577,
+  "degree": 2,
+  "initial_degree_energy_fraction": 0.0,
+  "final_degree_energy_fraction": 0.9086927094376229,
+  "max_degree_energy_fraction": 0.9086927094376229,
+  "initial_urms": 0.9999999999999998,
+  "final_urms": 0.9999999986351821,
+  "max_relative_energy_change": 2.729635428843638e-09,
+  "max_relative_enstrophy_change": 1.0652420400764371e-06,
+  "final_relative_energy_change": -2.729635406595321e-09,
+  "final_relative_enstrophy_change": -1.0652420400214524e-06,
+  "max_pv_enstrophy_change_over_initial_relative_enstrophy": 1.0652420344712857e-06,
+  "max_angular_momentum_change": 4.090057605905003e-13,
+  "max_absolute_circulation": 9.885117200945205e-13,
+  "max_poisson_relative": 1.4205166693284977e-14,
+  "demodulation_speed": -1.0,
+  "demodulation_axis": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "moving_frame_test": {
+    "recorded_frame": "rotating",
+    "definition": "Undo only the prescribed RH rotation of P2 psi. Test that projected profile including amplitude; degree one is excluded and monitored separately as a constraint.",
+    "zero_rotation_control": false,
+    "interpretation": "Nonzero prescribed RH rotation is removed without fitting the observed motion."
+  },
+  "coherence_energy_fraction_floor": 1e-06,
+  "initial_leakage_reference_fraction": 0.0,
+  "coherence_resolved_samples": 100,
+  "coherence": [
+    {
+      "waiting_time": 0.1,
+      "sample_count": 100,
+      "max_observed_lag": 9.9,
+      "max_distance": 1.2051993850609777,
+      "final_distance": 1.1974284405493563,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.6000000000000001,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 99.0,
+      "distance_at_one_age": 0.1006166877937251
+    },
+    {
+      "waiting_time": 2.1,
+      "sample_count": 80,
+      "max_observed_lag": 7.9,
+      "max_distance": 0.7200290484807053,
+      "final_distance": 0.6268644748686388,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 3.8000000000000003,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 3.761904761904762,
+      "distance_at_one_age": 0.2270115450536395
+    },
+    {
+      "waiting_time": 4.1000000000000005,
+      "sample_count": 60,
+      "max_observed_lag": 5.8999999999999995,
+      "max_distance": 0.8395188644904624,
+      "final_distance": 0.7323015529072447,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 1.5999999999999996,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 1.4390243902439022,
+      "distance_at_one_age": 0.832636394096205
+    },
+    {
+      "waiting_time": 6.1000000000000005,
+      "sample_count": 40,
+      "max_observed_lag": 3.8999999999999995,
+      "max_distance": 0.3617146788903001,
+      "final_distance": 0.25801630338856746,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": null,
+      "exit_time_right_censored": true,
+      "observed_coherence_lower_bound": 3.8999999999999995,
+      "max_lag_to_age": 0.6393442622950818,
+      "distance_at_one_age": null
+    },
+    {
+      "waiting_time": 8.1,
+      "sample_count": 20,
+      "max_observed_lag": 1.9000000000000004,
+      "max_distance": 0.12746346457381474,
+      "final_distance": 0.12746346457381474,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": null,
+      "exit_time_right_censored": true,
+      "observed_coherence_lower_bound": 1.9000000000000004,
+      "max_lag_to_age": 0.23456790123456794,
+      "distance_at_one_age": null
+    }
+  ],
+  "profile_persistence": {
+    "definition": "Unnormalized coefficient difference divided by the waiting-time norm; amplitude changes are retained.",
+    "scope": "Tests only P2 psi. Degree one is excluded and monitored separately through angular momentum; other degrees need not freeze.",
+    "curves": [
+      {
+        "waiting_time": 0.1,
+        "max_observed_lag": 9.9,
+        "max_recorded_frame_distance": 39.18286076088722,
+        "max_prescribed_moving_frame_distance": 38.31496789855561,
+        "final_recorded_frame_distance": 39.17665840280783,
+        "final_prescribed_moving_frame_distance": 38.31496789855561,
+        "final_amplitude_ratio": 38.58604460185597
+      },
+      {
+        "waiting_time": 2.1,
+        "max_observed_lag": 7.9,
+        "max_recorded_frame_distance": 3.003467264073149,
+        "max_prescribed_moving_frame_distance": 1.8527488302540231,
+        "final_recorded_frame_distance": 2.4267301142230036,
+        "final_prescribed_moving_frame_distance": 1.8182087433111849,
+        "final_amplitude_ratio": 2.521521679289267
+      },
+      {
+        "waiting_time": 4.1000000000000005,
+        "max_observed_lag": 5.8999999999999995,
+        "max_recorded_frame_distance": 2.0916525460987816,
+        "max_prescribed_moving_frame_distance": 1.015519476355092,
+        "final_recorded_frame_distance": 1.0707982332559116,
+        "final_prescribed_moving_frame_distance": 0.9185691570667877,
+        "final_amplitude_ratio": 1.347820885552446
+      },
+      {
+        "waiting_time": 6.1000000000000005,
+        "max_observed_lag": 3.8999999999999995,
+        "max_recorded_frame_distance": 1.693842588024228,
+        "max_prescribed_moving_frame_distance": 0.3802502153795952,
+        "final_recorded_frame_distance": 1.693842588024228,
+        "final_prescribed_moving_frame_distance": 0.28470692197983277,
+        "final_amplitude_ratio": 1.0915880909718887
+      },
+      {
+        "waiting_time": 8.1,
+        "max_observed_lag": 1.9000000000000004,
+        "max_recorded_frame_distance": 1.7042005820736288,
+        "max_prescribed_moving_frame_distance": 0.13122754642125334,
+        "final_recorded_frame_distance": 1.7042005820736288,
+        "final_prescribed_moving_frame_distance": 0.13122754642125334,
+        "final_amplitude_ratio": 1.0241212974642837
+      }
+    ]
+  },
+  "segments": [],
+  "warnings": [
+    "Demodulation uses prescribed background rotation; an additional degree-one relative flow is not fitted."
+  ],
+  "initial_degree1_energy_fraction": 0.0,
+  "final_degree1_energy_fraction": 3.0744566652401044e-28,
+  "max_degree1_energy_fraction": 1.5890237240588019e-27,
+  "quadrupole_shape": {
+    "definition": "phi_2(r)=r^T Q r, trace(Q)=0; sorted eigenvalues normalized by the Frobenius norm of Q.",
+    "distance_definition": "Exact minimum normalized coefficient distance over SO(3); prescribed moving-frame coherence is reported separately.",
+    "cubic_invariant_definition": "sqrt(6)*trace(Q^3)/trace(Q^2)^(3/2), in [-1,1].",
+    "final_normalized_eigenvalues": [
+      -0.6921588542605829,
+      -0.029003350868789326,
+      0.721162205129372
+    ],
+    "final_cubic_invariant": 0.10638583174023492,
+    "coherence": [
+      {
+        "waiting_time": 0.1,
+        "max_observed_lag": 9.9,
+        "max_orbit_distance": 0.8505941261540683,
+        "final_orbit_distance": 0.3664761997943222,
+        "final_prescribed_moving_frame_distance": 1.1974284405493563,
+        "orbit_distance_at_one_age": 0.030090449662740604
+      },
+      {
+        "waiting_time": 2.1,
+        "max_observed_lag": 7.9,
+        "max_orbit_distance": 0.5197949310121742,
+        "final_orbit_distance": 0.4437894130047365,
+        "final_prescribed_moving_frame_distance": 0.6268644748686388,
+        "orbit_distance_at_one_age": 0.10593759584550431
+      },
+      {
+        "waiting_time": 4.1000000000000005,
+        "max_observed_lag": 5.8999999999999995,
+        "max_orbit_distance": 0.39531586887432935,
+        "final_orbit_distance": 0.31825990449550556,
+        "final_prescribed_moving_frame_distance": 0.7323015529072447,
+        "orbit_distance_at_one_age": 0.38683755859750646
+      },
+      {
+        "waiting_time": 6.1000000000000005,
+        "max_observed_lag": 3.8999999999999995,
+        "max_orbit_distance": 0.23999185058334693,
+        "final_orbit_distance": 0.16207597778335991,
+        "final_prescribed_moving_frame_distance": 0.25801630338856746,
+        "orbit_distance_at_one_age": null
+      },
+      {
+        "waiting_time": 8.1,
+        "max_observed_lag": 1.9000000000000004,
+        "max_orbit_distance": 0.06606388672435123,
+        "final_orbit_distance": 0.06142365458292418,
+        "final_prescribed_moving_frame_distance": 0.12746346457381474,
+        "orbit_distance_at_one_age": null
+      }
+    ]
+  }
+}

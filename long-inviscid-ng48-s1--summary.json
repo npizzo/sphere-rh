@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "run": "long-inviscid-ng48-s1",
+  "metadata": {
+    "actual_ng": 48,
+    "build": {
+      "binary_sha256": "f46ea9f2e8712265f2bc87ccac69549cefd90eef16ebb7e7100c6d6610bede39",
+      "compiler": {
+        "name": "gfortran",
+        "version": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+      },
+      "features": {
+        "c_compiler": {
+          "name": "cc",
+          "version": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+        },
+        "c_flags": [
+          "-O3"
+        ],
+        "link_flags": [
+          "-lsuperlu",
+          "-lblas"
+        ],
+        "superlu": {
+          "library": "superlu",
+          "linked_sonames": [
+            "libblas.so.3",
+            "libsuperlu.so.6"
+          ],
+          "version": "6.0.1",
+          "version_source": "pkg-config"
+        },
+        "superlu_enabled": true,
+        "superlu_include_flags": [
+          "-I/usr/include/superlu"
+        ]
+      },
+      "fingerprint": "6d2e5fdf64a14431",
+      "fixed_source_flags": [
+        "-ffixed-line-length-none"
+      ],
+      "flags": [
+        "-cpp",
+        "-DGRID_NG=48",
+        "-fdefault-real-8",
+        "-fdefault-double-8",
+        "-std=legacy",
+        "-O3",
+        "-DHAVE_SUPERLU"
+      ],
+      "free_source_flags": [
+        "-ffree-line-length-none"
+      ],
+      "provenance": "built_from_recorded_sources"
+    },
+    "case": "long_time",
+    "case_name": "long-inviscid-ng48-s1",
+    "checkpoint_sha256": "d954bc6cc3a2528498983be13085d63a9424a6c6260c1cc5bf959d3e06183a31",
+    "config_file": "config.nml",
+    "config_sha256": "422d7b2909b83a04a2ad8ef0ae1375ad2ae1c6393859cb614dfdeace8bc35fdc",
+    "created_at": "2026-10-27T13:18:49+00:00",
+    "execution": {
+      "architecture": "x86_64",
+      "cpus_requested": "1",
+      "environment": "slurm",
+      "os": "Linux",
+      "slurm_array_task_id": null
+    },
+    "finished_at": "2026-10-27T13:24:54+00:00",
+    "frame": "rotating",
+    "id": "long-inviscid-ng48-s1",
+    "initial_realization": "Seeded protocol realization; original paper realization not asserted.",
+    "label": "long-inviscid-ng48-s1 \u00b7 ng=48",
+    "ng": 48,
+    "omega": 0.0,
+    "parameters": {
+      "axis": "z",
+      "case_name": "long-inviscid-ng48-s1",
+      "cfl": 0.1,
+      "checkpoint_interval": 2.0,
+      "diag_interval": 0.2,
+      "diag_nmax": 8,
+      "equal_shell_energy": true,
+      "max_steps": 10000000,
+      "nhi": 6,
+      "nlo": 4,
+      "omega": 0.0,
+      "pcg_max": 2000,
+      "poisson_solver": "superlu",
+      "poisson_tol": 1e-08,
+      "remove_initial_l1": true,
+      "restart_file": "",
+      "rotation_cfl": 1.0,
+      "seed": 1,
+      "snapshot_interval": 20.0,
+      "sor_batch": 20,
+      "sor_max": 12000,
+      "target_degree": 2,
+      "tstop": 200.0,
+      "visc_factor": 1.0,
+      "visc_fixed": -1.0,
+      "viscosity_mode": "none"
+    },
+    "poisson_solver": "superlu",
+    "restart": null,
+    "returncode": 0,
+    "rh_speed_in_recorded_frame": -0.0,
+    "rotation_axis": "z",
+    "schema_version": 1,
+    "seed": 1,
+    "solver_status": {
+      "cpu_seconds": 365.31007,
+      "pcg_iterations": 0,
+      "poisson_solver": "superlu",
+      "sor_sweeps": 0,
+      "step": 88999,
+      "stop_reason": "tstop",
+      "superlu_solves": 178002,
+      "time": 199.9999999999972,
+      "turnover_time": 200.10108912753861
+    },
+    "source_sha256": {
+      "Makefile": "ab1b5cc33ff912a84b556a8625d3680706fd206fe906b6276fbf86d0729243ea",
+      "original/mg1.f": "502d00902d31b7e7c5065ca3dd66cebe20539ae957a601de2d79fad75a01b166",
+      "original/mg2.f": "6f2a2ca1549e2376a5c13ef8cace8561b78516b3867f851f4de1c44d40b016bc",
+      "original/mg3.f": "37af9874e5314e7af55c5740bfea872711e2c116c7c5af6dd8ea7ff93b89f42d",
+      "scripts/run.py": "1d4ada7a574c4bf08e481d6edc3d8ea79eb4319e21c808b0ee4c34270955bc4f",
+      "src/grid.inc": "c0c77e299e2d21610a31491e6fab382115a7b58eaf7222a42264c82c39208ba3",
+      "src/main.f90": "244c74b80b964ec6a91304e53e39e6de4cd958b914a9839b75b8cec8354ec42b",
+      "src/mg_core.f": "83e5de217643fbe5cda674b17e8b57bab9a7d3c314777f6584b2576000352f3c",
+      "src/poisson_pcg.f90": "ce258b79aad95a2d73665120d083a1f56c453553eb70c3e336749af8385b5f74",
+      "src/research_io.f90": "e4573629e1591a5604dbe99edc1e4ed6c57de28dd6d4ae9755fa96e525e05faf",
+      "src/superlu_bridge.c": "7a1e55616e807e9e37470415d665c7223f91abe3fdc6ac3c05420488702295f9"
+    },
+    "started_at": "2026-10-27T13:18:49+00:00",
+    "status": "completed",
+    "target_degree": 2,
+    "viscosity_operator": "none",
+    "wall_seconds": 365.59466843213886
+  },
+  "assessment": "Measured finite-duration run; does not establish asymptotic freezing of P2 psi in the prescribed RH frame.",
+  "records": 1001,
+  "first_time": 0.0,
+  "last_time": 199.9999999999972,
+  "last_step": 88999,
+  "turnover_age_integral_urms_dt": 200.10108907084393,
+  "degree": 2,
+  "initial_degree_energy_fraction": 4.6920563708758104e-07,
+  "final_degree_energy_fraction": 0.8788368716946775,
+  "max_degree_energy_fraction": 0.8871373540656662,
+  "initial_urms": 1.0000000000000033,
+  "final_urms": 1.0010896449225228,
+  "max_relative_energy_change": 0.0021804771710960394,
+  "max_relative_enstrophy_change": 0.19397084503937606,
+  "final_relative_energy_change": 0.0021804771710960402,
+  "final_relative_enstrophy_change": 0.193970845039376,
+  "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.19397084503937606,
+  "max_angular_momentum_change": 0.17366924866988137,
+  "max_absolute_circulation": 6.613047782988435e-14,
+  "max_poisson_relative": 1.3936247310779662e-10,
+  "demodulation_speed": -0.0,
+  "demodulation_axis": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "moving_frame_test": {
+    "recorded_frame": "rotating",
+    "definition": "Undo only the prescribed RH rotation of P2 psi. Test that projected profile including amplitude; degree one is excluded and monitored separately as a constraint.",
+    "zero_rotation_control": true,
+    "interpretation": "Omega=0 gives zero prescribed speed here; this control does not test nonzero-speed relative equilibria."
+  },
+  "coherence_energy_fraction_floor": 4.69205637087581e-06,
+  "initial_leakage_reference_fraction": 4.6920563708758104e-07,
+  "coherence_resolved_samples": 1000,
+  "coherence": [
+    {
+      "waiting_time": 0.2,
+      "sample_count": 1000,
+      "max_observed_lag": 199.7999999999972,
+      "max_distance": 1.8333967743660322,
+      "final_distance": 1.7287025405712426,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.6000000000000001,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 998.9999999999859,
+      "distance_at_one_age": 0.23512350151335884
+    },
+    {
+      "waiting_time": 40.20000000000003,
+      "sample_count": 800,
+      "max_observed_lag": 159.79999999999717,
+      "max_distance": 1.7096872725304029,
+      "final_distance": 1.445437790295496,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 3.0000000000000426,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 3.975124378109379,
+      "distance_at_one_age": 0.6018756748917401
+    },
+    {
+      "waiting_time": 80.2000000000006,
+      "sample_count": 600,
+      "max_observed_lag": 119.79999999999659,
+      "max_distance": 1.7095853605916835,
+      "final_distance": 1.5303616348595204,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 5.400000000000077,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 1.493765586034859,
+      "distance_at_one_age": 0.8807456010785103
+    },
+    {
+      "waiting_time": 120.20000000000117,
+      "sample_count": 400,
+      "max_observed_lag": 79.79999999999602,
+      "max_distance": 1.7350337716641187,
+      "final_distance": 1.6731450124599199,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 4.4000000000000625,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 0.6638935108152683,
+      "distance_at_one_age": null
+    },
+    {
+      "waiting_time": 160.19999999999945,
+      "sample_count": 200,
+      "max_observed_lag": 39.79999999999774,
+      "max_distance": 1.232161225811545,
+      "final_distance": 0.8515239231525585,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 4.199999999999761,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 0.24843945068662843,
+      "distance_at_one_age": null
+    }
+  ],
+  "profile_persistence": {
+    "definition": "Unnormalized coefficient difference divided by the waiting-time norm; amplitude changes are retained.",
+    "scope": "Tests only P2 psi. Degree one is excluded and monitored separately through angular momentum; other degrees need not freeze.",
+    "curves": [
+      {
+        "waiting_time": 0.2,
+        "max_observed_lag": 199.7999999999972,
+        "max_recorded_frame_distance": 18.25336395989187,
+        "max_prescribed_moving_frame_distance": 18.25336395989187,
+        "final_recorded_frame_distance": 18.10544183555033,
+        "final_prescribed_moving_frame_distance": 18.10544183555033,
+        "final_amplitude_ratio": 17.59035247669551
+      },
+      {
+        "waiting_time": 40.20000000000003,
+        "max_observed_lag": 159.79999999999717,
+        "max_recorded_frame_distance": 1.7241747345050948,
+        "max_prescribed_moving_frame_distance": 1.7241747345050948,
+        "final_recorded_frame_distance": 1.4564865040930912,
+        "final_prescribed_moving_frame_distance": 1.4564865040930912,
+        "final_amplitude_ratio": 1.0152350407765196
+      },
+      {
+        "waiting_time": 80.2000000000006,
+        "max_observed_lag": 119.79999999999659,
+        "max_recorded_frame_distance": 1.7156792475527662,
+        "max_prescribed_moving_frame_distance": 1.7156792475527662,
+        "final_recorded_frame_distance": 1.5334105385260945,
+        "final_prescribed_moving_frame_distance": 1.5334105385260945,
+        "final_amplitude_ratio": 1.0039817527953572
+      },
+      {
+        "waiting_time": 120.20000000000117,
+        "max_observed_lag": 79.79999999999602,
+        "max_recorded_frame_distance": 1.7351015979273696,
+        "max_prescribed_moving_frame_distance": 1.7351015979273696,
+        "final_recorded_frame_distance": 1.6738815697286817,
+        "final_prescribed_moving_frame_distance": 1.6738815697286817,
+        "final_amplitude_ratio": 1.0008803633593775
+      },
+      {
+        "waiting_time": 160.19999999999945,
+        "max_observed_lag": 39.79999999999774,
+        "max_recorded_frame_distance": 1.237036470062008,
+        "max_prescribed_moving_frame_distance": 1.237036470062008,
+        "final_recorded_frame_distance": 0.8539939434947922,
+        "final_prescribed_moving_frame_distance": 0.8539939434947922,
+        "final_amplitude_ratio": 1.005764005599211
+      }
+    ]
+  },
+  "segments": [],
+  "warnings": [
+    "The condensate is absent from the specified initial band; its initial projected energy is a numerical leakage reference.",
+    "Inviscid PV-enstrophy changes by >1% of initial relative enstrophy; this run needs convergence checks."
+  ],
+  "initial_degree1_energy_fraction": 1.155632128641784e-08,
+  "final_degree1_energy_fraction": 0.000226770208292831,
+  "max_degree1_energy_fraction": 0.0002864409683641286,
+  "quadrupole_shape": {
+    "definition": "phi_2(r)=r^T Q r, trace(Q)=0; sorted eigenvalues normalized by the Frobenius norm of Q.",
+    "distance_definition": "Exact minimum normalized coefficient distance over SO(3); prescribed moving-frame coherence is reported separately.",
+    "cubic_invariant_definition": "sqrt(6)*trace(Q^3)/trace(Q^2)^(3/2), in [-1,1].",
+    "final_normalized_eigenvalues": [
+      -0.7023139773896174,
+      -0.009490079603800489,
+      0.711804056993418
+    ],
+    "final_cubic_invariant": 0.03486249829475024,
+    "coherence": [
+      {
+        "waiting_time": 0.2,
+        "max_observed_lag": 199.7999999999972,
+        "max_orbit_distance": 0.6312269055533983,
+        "final_orbit_distance": 0.14774795166231003,
+        "final_prescribed_moving_frame_distance": 1.7287025405712426,
+        "orbit_distance_at_one_age": 0.21984247388809608
+      },
+      {
+        "waiting_time": 40.20000000000003,
+        "max_observed_lag": 159.79999999999717,
+        "max_orbit_distance": 0.09223292357089607,
+        "final_orbit_distance": 0.04133487071760786,
+        "final_prescribed_moving_frame_distance": 1.445437790295496,
+        "orbit_distance_at_one_age": 0.08310023056516921
+      },
+      {
+        "waiting_time": 80.2000000000006,
+        "max_observed_lag": 119.79999999999659,
+        "max_orbit_distance": 0.10912357133797147,
+        "final_orbit_distance": 0.029739258851133935,
+        "final_prescribed_moving_frame_distance": 1.5303616348595204,
+        "orbit_distance_at_one_age": 0.01806811735072639
+      },
+      {
+        "waiting_time": 120.20000000000117,
+        "max_observed_lag": 79.79999999999602,
+        "max_orbit_distance": 0.083901508502606,
+        "final_orbit_distance": 0.03299680676433037,
+        "final_prescribed_moving_frame_distance": 1.6731450124599199,
+        "orbit_distance_at_one_age": null
+      },
+      {
+        "waiting_time": 160.19999999999945,
+        "max_observed_lag": 39.79999999999774,
+        "max_orbit_distance": 0.10138201655637014,
+        "final_orbit_distance": 0.02198760968140089,
+        "final_prescribed_moving_frame_distance": 0.8515239231525585,
+        "orbit_distance_at_one_age": null
+      }
+    ]
+  }
+}

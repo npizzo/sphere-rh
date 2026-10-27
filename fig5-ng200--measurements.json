@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-27T14:22:11.168500+00:00",
+  "status": "completed",
+  "title": "Figure 5 protocol at NG200, with NG48 comparison",
+  "description": "Seeded degree-six Rossby\u2013Haurwitz wave rotating about y with Omega=50; six snapshots cover one prescribed period. Top row: original grid-dependent Laplacian viscosity. Bottom row: inviscid.",
+  "prescribed_rotating_frame_speed": -2.380952380952381,
+  "period": 2.6389378290154264,
+  "recurrence_definition": "Weighted relative-vorticity L2 difference from the initial grid field after a scalar amplitude projection, at the prescribed first recurrence time. No phase or rotation is fitted in this metric.",
+  "phase_fit_definition": "A separate end-point phase fit is reported as a diagnostic; it is never applied to the prescribed-speed recurrence metric or the plotted snapshots.",
+  "inviscid_recurrence_error_reduction_factor_ng48_over_ng200": 10.368992150892531,
+  "runs": [
+    {
+      "id": "fig5-inviscid-ng48-s1",
+      "ng": 48,
+      "viscosity_mode": "none",
+      "poisson_backend": "sor",
+      "seed": 1,
+      "frame": "rotating",
+      "rotation_axis": "y",
+      "omega": 50.0,
+      "initial_energy": 6.28318530699996,
+      "final_energy": 6.283191607967419,
+      "initial_viscosity": 0.0,
+      "final_viscosity": 0.0,
+      "maximum_recorded_step_size": 0.00045454545454545455,
+      "first_time": 0.0,
+      "last_time": 2.638937829015426,
+      "records": 133,
+      "last_step": 5810,
+      "max_relative_energy_change": 1.0028301173746433e-06,
+      "max_relative_enstrophy_change": 0.0010869522738112187,
+      "max_pv_enstrophy_change_over_initial_relative_enstrophy": 1.0260588516994789e-06,
+      "max_angular_momentum_change": 0.002896440990376319,
+      "max_absolute_circulation": 1.5790008731954297e-14,
+      "max_poisson_relative": 9.999946992412793e-09,
+      "initial_degree1_energy_fraction": 4.615334049665744e-13,
+      "final_degree1_energy_fraction": 1.8371270073043432e-08,
+      "max_degree1_energy_fraction": 7.996332881109552e-08,
+      "rh_validation": {
+        "run": "fig5-inviscid-ng48-s1",
+        "available": true,
+        "degree": 6,
+        "predicted_speed": -2.380952380952381,
+        "period": 2.6389378290154264,
+        "samples": [
+          {
+            "time": 0.0,
+            "relative_shape_error": 0.001750151807693593,
+            "amplitude_projection": 0.9960926329324253,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 0.5277875658030852,
+            "relative_shape_error": 0.026377658556298315,
+            "amplitude_projection": 0.9952095340133236,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 1.0555751316061703,
+            "relative_shape_error": 0.05014318064580087,
+            "amplitude_projection": 0.9951418515913891,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 1.5833626974092554,
+            "relative_shape_error": 0.07202143123554504,
+            "amplitude_projection": 0.9931536247987166,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 2.1111502632123407,
+            "relative_shape_error": 0.09382917300804884,
+            "amplitude_projection": 0.9915661788037039,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 2.638937829015426,
+            "relative_shape_error": 0.11630423265118008,
+            "amplitude_projection": 0.9895992005826458,
+            "expected_amplitude_constant_viscosity": 1.0
+          }
+        ],
+        "first_period_recurrence": {
+          "time": 2.638937829015426,
+          "time_offset_from_exact_period": -4.440892098500626e-16,
+          "relative_shape_error_to_initial_grid_field": 0.11613761842282443,
+          "amplitude_projection": 0.9934990757641531
+        },
+        "separate_constant_phase_fit": {
+          "method": "A single end-point angular offset is fitted separately; prescribed-speed errors and coherence are unchanged.",
+          "phase_identifiable": true,
+          "phase_offset_radians": 0.02681513975493388,
+          "phase_offset_cycles": 0.004267762041697722,
+          "inferred_mean_speed_near_predicted": -2.3707910427578627,
+          "prescribed_speed_coefficient_distance": 0.11382808070990842,
+          "coefficient_distance_after_constant_phase_fit": 0.012623264870308699
+        },
+        "observed_rotation_periods": 0.9999999999999998
+      },
+      "source_report_sha256": "a419a8ce474375f907cefed865b1d45a99a6b8ddfc9ea856c2c810bfaebc5c7b"
+    },
+    {
+      "id": "fig5-legacy-ng48-s1",
+      "ng": 48,
+      "viscosity_mode": "legacy",
+      "poisson_backend": "sor",
+      "seed": 1,
+      "frame": "rotating",
+      "rotation_axis": "y",
+      "omega": 50.0,
+      "initial_energy": 6.28318530699996,
+      "final_energy": 3.3596944554043358,
+      "initial_viscosity": 0.0033406554361970187,
+      "final_viscosity": 0.002443989876754239,
+      "maximum_recorded_step_size": 0.00045454545454545455,
+      "first_time": 0.0,
+      "last_time": 2.638937829015426,
+      "records": 133,
+      "last_step": 5810,
+      "max_relative_energy_change": 0.4652880201286801,
+      "max_relative_enstrophy_change": 0.4652565664407921,
+      "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.4654453892560303,
+      "max_angular_momentum_change": 0.0028568206324919476,
+      "max_absolute_circulation": 0.0004667993727151585,
+      "max_poisson_relative": 9.944224637588659e-09,
+      "initial_degree1_energy_fraction": 4.615334049665744e-13,
+      "final_degree1_energy_fraction": 4.22389987045094e-09,
+      "max_degree1_energy_fraction": 8.653421723887055e-08,
+      "rh_validation": {
+        "run": "fig5-legacy-ng48-s1",
+        "available": true,
+        "degree": 6,
+        "predicted_speed": -2.380952380952381,
+        "period": 2.6389378290154264,
+        "samples": [
+          {
+            "time": 0.0,
+            "relative_shape_error": 0.001750151807693593,
+            "amplitude_projection": 0.9960926329324253
+          },
+          {
+            "time": 0.5277875658030852,
+            "relative_shape_error": 0.02425506045713649,
+            "amplitude_projection": 0.9271089921413488
+          },
+          {
+            "time": 1.0555751316061703,
+            "relative_shape_error": 0.04782341179676643,
+            "amplitude_projection": 0.8676483619334049
+          },
+          {
+            "time": 1.5833626974092554,
+            "relative_shape_error": 0.06995973766924918,
+            "amplitude_projection": 0.8137324393763083
+          },
+          {
+            "time": 2.1111502632123407,
+            "relative_shape_error": 0.09212403999581659,
+            "amplitude_projection": 0.7662706969421126
+          },
+          {
+            "time": 2.638937829015426,
+            "relative_shape_error": 0.1149038120843065,
+            "amplitude_projection": 0.723580840373409
+          }
+        ],
+        "first_period_recurrence": {
+          "time": 2.638937829015426,
+          "time_offset_from_exact_period": -4.440892098500626e-16,
+          "relative_shape_error_to_initial_grid_field": 0.11474205257820781,
+          "amplitude_projection": 0.7264317870790993
+        },
+        "separate_constant_phase_fit": {
+          "method": "A single end-point angular offset is fitted separately; prescribed-speed errors and coherence are unchanged.",
+          "phase_identifiable": true,
+          "phase_offset_radians": 0.026987086194980137,
+          "phase_offset_cycles": 0.004295128167578138,
+          "inferred_mean_speed_near_predicted": -2.37072588531529,
+          "prescribed_speed_coefficient_distance": 0.11459385833158442,
+          "coefficient_distance_after_constant_phase_fit": 0.012654583518898647
+        },
+        "observed_rotation_periods": 0.9999999999999998
+      },
+      "source_report_sha256": "7712a65f76c60dbf55bd85d1761cf9711c9ed358a3326a78e2403c929635628b"
+    },
+    {
+      "id": "fig5-inviscid-ng200-s1",
+      "ng": 200,
+      "viscosity_mode": "none",
+      "poisson_backend": "superlu",
+      "seed": 1,
+      "frame": "rotating",
+      "rotation_axis": "y",
+      "omega": 50.0,
+      "initial_energy": 6.283185306999953,
+      "final_energy": 6.283185380003404,
+      "initial_viscosity": 0.0,
+      "final_viscosity": 0.0,
+      "maximum_recorded_step_size": 0.0001020408163265306,
+      "first_time": 0.0,
+      "last_time": 2.638937829015426,
+      "records": 133,
+      "last_step": 25877,
+      "max_relative_energy_change": 1.1618860134970971e-08,
+      "max_relative_enstrophy_change": 0.00011776912290686518,
+      "max_pv_enstrophy_change_over_initial_relative_enstrophy": 1.5262257711466787e-08,
+      "max_angular_momentum_change": 0.00032885127266683037,
+      "max_absolute_circulation": 7.397747490950997e-14,
+      "max_poisson_relative": 9.949947182713428e-09,
+      "initial_degree1_energy_fraction": 1.1059134845993113e-15,
+      "final_degree1_energy_fraction": 2.1122802053148725e-10,
+      "max_degree1_energy_fraction": 1.0288263547994e-09,
+      "rh_validation": {
+        "run": "fig5-inviscid-ng200-s1",
+        "available": true,
+        "degree": 6,
+        "predicted_speed": -2.380952380952381,
+        "period": 2.6389378290154264,
+        "samples": [
+          {
+            "time": 0.0,
+            "relative_shape_error": 0.00019607727235650927,
+            "amplitude_projection": 0.9999510123510053,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 0.5277875658030852,
+            "relative_shape_error": 0.00415929425578645,
+            "amplitude_projection": 0.9998939467934534,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 1.0555751316061703,
+            "relative_shape_error": 0.006152653205223807,
+            "amplitude_projection": 0.9999452816699043,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 1.5833626974092554,
+            "relative_shape_error": 0.007973690757179271,
+            "amplitude_projection": 0.999880737640419,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 2.1111502632123407,
+            "relative_shape_error": 0.009681903946724798,
+            "amplitude_projection": 0.9998738173791573,
+            "expected_amplitude_constant_viscosity": 1.0
+          },
+          {
+            "time": 2.638937829015426,
+            "relative_shape_error": 0.01118758131501041,
+            "amplitude_projection": 0.9999168099586871,
+            "expected_amplitude_constant_viscosity": 1.0
+          }
+        ],
+        "first_period_recurrence": {
+          "time": 2.638937829015426,
+          "time_offset_from_exact_period": -4.440892098500626e-16,
+          "relative_shape_error_to_initial_grid_field": 0.011200473173550204,
+          "amplitude_projection": 0.9999656323846629
+        },
+        "separate_constant_phase_fit": {
+          "method": "A single end-point angular offset is fitted separately; prescribed-speed errors and coherence are unchanged.",
+          "phase_identifiable": true,
+          "phase_offset_radians": 0.0019020318889064747,
+          "phase_offset_cycles": 0.0003027177770378802,
+          "inferred_mean_speed_near_predicted": -2.380231624340386,
+          "prescribed_speed_coefficient_distance": 0.008043606970955058,
+          "coefficient_distance_after_constant_phase_fit": 0.0004979280334735516
+        },
+        "observed_rotation_periods": 0.9999999999999998
+      },
+      "source_report_sha256": "af618a719fe720469904ab5ccdfdd5c66b8ee43c30ba2f720d44651de4dd7018"
+    },
+    {
+      "id": "fig5-legacy-ng200-s1",
+      "ng": 200,
+      "viscosity_mode": "legacy",
+      "poisson_backend": "superlu",
+      "seed": 1,
+      "frame": "rotating",
+      "rotation_axis": "y",
+      "omega": 50.0,
+      "initial_energy": 6.283185306999953,
+      "final_energy": 6.054881132852618,
+      "initial_viscosity": 0.0001686941143868861,
+      "final_viscosity": 0.00016560157996697576,
+      "maximum_recorded_step_size": 0.0001020408163265306,
+      "first_time": 0.0,
+      "last_time": 2.638937829015426,
+      "records": 133,
+      "last_step": 25877,
+      "max_relative_energy_change": 0.03633573784510013,
+      "max_relative_enstrophy_change": 0.03633042780672704,
+      "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.03638058002020763,
+      "max_angular_momentum_change": 0.00033651967185756114,
+      "max_absolute_circulation": 1.79332207401141e-05,
+      "max_poisson_relative": 9.950181796029487e-09,
+      "initial_degree1_energy_fraction": 1.1059134845993113e-15,
+      "final_degree1_energy_fraction": 1.7139425350173597e-10,
+      "max_degree1_energy_fraction": 1.0828899601872433e-09,
+      "rh_validation": {
+        "run": "fig5-legacy-ng200-s1",
+        "available": true,
+        "degree": 6,
+        "predicted_speed": -2.380952380952381,
+        "period": 2.6389378290154264,
+        "samples": [
+          {
+            "time": 0.0,
+            "relative_shape_error": 0.00019607727235650927,
+            "amplitude_projection": 0.9999510123510053
+          },
+          {
+            "time": 0.5277875658030852,
+            "relative_shape_error": 0.002683029516447941,
+            "amplitude_projection": 0.9961724124129359
+          },
+          {
+            "time": 1.0555751316061703,
+            "relative_shape_error": 0.00398385232693186,
+            "amplitude_projection": 0.9925297704747109
+          },
+          {
+            "time": 1.5833626974092554,
+            "relative_shape_error": 0.005725716340384597,
+            "amplitude_projection": 0.988799121481346
+          },
+          {
+            "time": 2.1111502632123407,
+            "relative_shape_error": 0.0072043903993197255,
+            "amplitude_projection": 0.9851528594569166
+          },
+          {
+            "time": 2.638937829015426,
+            "relative_shape_error": 0.008591637145370125,
+            "amplitude_projection": 0.9815824306960255
+          }
+        ],
+        "first_period_recurrence": {
+          "time": 2.638937829015426,
+          "time_offset_from_exact_period": -4.440892098500626e-16,
+          "relative_shape_error_to_initial_grid_field": 0.00860854877498758,
+          "amplitude_projection": 0.98163035681683
+        },
+        "separate_constant_phase_fit": {
+          "method": "A single end-point angular offset is fitted separately; prescribed-speed errors and coherence are unchanged.",
+          "phase_identifiable": true,
+          "phase_offset_radians": 0.0019033310630600653,
+          "phase_offset_cycles": 0.00030292454702636137,
+          "inferred_mean_speed_near_predicted": -2.3802311320308895,
+          "prescribed_speed_coefficient_distance": 0.008048999799503012,
+          "coefficient_distance_after_constant_phase_fit": 0.0004962939042142712
+        },
+        "observed_rotation_periods": 0.9999999999999998
+      },
+      "source_report_sha256": "24ef1b717f37491c3289008442604185796cf5d64dde4624d7a4fd2db68a1d3c"
+    }
+  ],
+  "interpretation": [
+    "NG200 improves the measured one-period recurrence relative to NG48, but two meshes with changed timestep/backend are not a standalone spatial-order estimate.",
+    "The original random realization was not supplied; these are seeded protocol reproductions, not pointwise copies of the published panels.",
+    "Legacy viscosity depends on grid scale and evolving flow strength. NG48 and NG200 therefore do not hold the physical viscosity coefficient fixed; their damping difference is not a fixed-viscosity convergence test.",
+    "Energy and PV-enstrophy budget drift are distinguished from relative-enstrophy change and angular-momentum leakage.",
+    "These one-period wave controls do not establish a long-time turbulent end state."
+  ]
+}

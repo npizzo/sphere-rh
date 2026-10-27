@@ -1,7 +1,364 @@
 {
-  "updated_at": "2026-10-27T11:41:45.465331+00:00",
-  "status": "4 paper-resolution/refinement runs running \u00b7 3 controls queued \u00b7 hourly checks",
+  "updated_at": "2026-10-27T14:32:28.615047+00:00",
+  "status": "Matched Fortran/JAX results verified \u00b7 further resolution and longer finite-Galerkin checks submitted",
   "runs": [
+    {
+      "id": "shared-rh2-validation",
+      "label": "Degree-two rotation \u00b7 independent solver comparison",
+      "status": "completed",
+      "case": "moving_frame",
+      "t_final": 6.283185307179586,
+      "summary": "Three calculations with two independent numerical methods start from the same requested degree-two harmonic coefficients with \u03a9=3. Over a full period, the amplitude-inclusive P\u2082\u03c8 error in the prescribed rotating frame falls from 1.83% at Fortran NG48 to 0.678% at NG100; independent harmonic JAX gives 1.3\u00d710\u207b\u00b9\u2074. No rotation rate is fitted. The raw profile propagates with speed \u22121 in this frame, or 2 in the inertial frame. This is a test of the exact solution and numerical accuracy, not evidence that turbulence approaches it.",
+      "metrics": {
+        "ng48": {
+          "label": "NG48 moving-frame profile error",
+          "value": 1.8315678296774545,
+          "unit": "%"
+        },
+        "ng100": {
+          "label": "NG100 moving-frame profile error",
+          "value": 0.6783245021379254,
+          "unit": "%"
+        },
+        "jax": {
+          "label": "JAX maximum relative profile error",
+          "value": 1.2728759623207096e-14
+        },
+        "speed": {
+          "label": "Prescribed rotating-frame speed",
+          "value": -1
+        }
+      },
+      "figures": [
+        {
+          "src": "shared-rh2-validation--validation.png",
+          "alt": "Degree-two moving-frame profile and amplitude errors at two grid resolutions and in JAX",
+          "caption": "Only degree two is compared, including amplitude. Each curve uses its own initial profile; separate comparisons below include the small initial differences from discrete sampling, mean compatibility correction and Poisson inversion."
+        },
+        {
+          "src": "shared-rh2-jax-l15--profile_persistence.png",
+          "alt": "Degree-two motion in the original frame and persistence after removing the predicted rotation",
+          "caption": "The same spectral degree-two field moves in the recorded frame and is steady in its prescribed moving frame. The diagnostic retains amplitude and does not fit the propagation speed."
+        }
+      ],
+      "links": [
+        {
+          "href": "shared-rh2-validation--summary.json",
+          "label": "Combined measurements"
+        },
+        {
+          "href": "shared-rh2-fortran-ng48-jax-comparison--comparison.json",
+          "label": "NG48 versus JAX"
+        },
+        {
+          "href": "shared-rh2-fortran-ng100-jax-comparison--comparison.json",
+          "label": "NG100 versus JAX"
+        },
+        {
+          "href": "shared-rh2-jax-l15--summary.json",
+          "label": "JAX settings and diagnostics"
+        }
+      ]
+    },
+    {
+      "id": "shared-mixed456-fortran-jax",
+      "label": "Shared turbulent initial field \u00b7 independent methods",
+      "status": "completed",
+      "case": "cross_solver",
+      "t_final": 10.0,
+      "summary": "With \u03a9=3, both methods start from the same requested harmonic vorticity in degrees 4\u20136, without amplitude rescaling. At t=10, Fortran NG100 and harmonic JAX L127 put 92.1% and 90.9% of their energy in degree two. Their amplitude-inclusive P\u2082 profiles differ by 17.7%, while halving the Fortran time step changes its P\u2082 profile by only 0.0578%. Spatial refinement remains essential: neither method is a converged reference, and the prescribed rotation is never fitted to the data. The Fortran sampling compatibility correction is disclosed.",
+      "metrics": {
+        "fortran_e2": {
+          "label": "Fortran NG100 final E\u2082/E",
+          "value": 0.9207313085137712
+        },
+        "jax_e2": {
+          "label": "JAX L127 final E\u2082/E",
+          "value": 0.9086927094376229
+        },
+        "profile": {
+          "label": "Final relative P\u2082 discrepancy",
+          "value": 17.66624069528336,
+          "unit": "%"
+        },
+        "dt": {
+          "label": "Fortran half-step P\u2082 change",
+          "value": 0.057764278476145806,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "shared-mixed456-fortran-ng100-halfdt-jax-l127-comparison--comparison.png",
+          "alt": "Independent Fortran and harmonic degree-two comparison",
+          "caption": "Same requested initial harmonics, amplitude retained, no fitted phase. The early difference includes discrete projection and inversion. Angular momentum and other degrees are excluded from the P\u2082 profile distance."
+        },
+        {
+          "src": "shared-mixed456-fortran-ng100-dt-comparison--comparison.png",
+          "alt": "Fortran mixed-run time-step refinement",
+          "caption": "Reducing CFL from 0.05 to 0.025 changes the final degree-two profile by 0.0578%. This isolates time-step sensitivity at NG100."
+        }
+      ],
+      "links": [
+        {
+          "href": "shared-mixed456-fortran-ng100-halfdt-jax-l127-comparison--comparison.json",
+          "label": "Cross-method measurements"
+        },
+        {
+          "href": "shared-mixed456-fortran-ng48-jax-l127-comparison--comparison.json",
+          "label": "Coarser NG48 comparison"
+        },
+        {
+          "href": "shared-mixed456-fortran-ng100-halfdt-r2--summary.json",
+          "label": "Fortran half-step diagnostics"
+        },
+        {
+          "href": "shared-mixed456-jax-gpu-l127-halfdt--summary.json",
+          "label": "JAX L127 half-step diagnostics"
+        }
+      ]
+    },
+    {
+      "id": "shared-mixed456-spectral-refinement",
+      "label": "Harmonic refinement \u00b7 conservation is not resolution",
+      "status": "completed",
+      "case": "refinement",
+      "t_final": 10.0,
+      "summary": "The same mixed-degree initial field gives E\u2082/E=0.814, 0.898 and 0.909 at harmonic cutoffs L31, L63 and L127. At a common time step, the final P\u2082 difference falls from 67.2% for L31\u2192L63 to 19.8% for L63\u2192L127. Halving the L127 time step changes P\u2082 by only 0.00176%. These finite-time results separate truncation sensitivity from time integration; they do not establish continuum convergence or long-time freezing. At L127, roughly 36% of enstrophy occupies the upper third of retained degrees. High-degree enstrophy accumulation is expected in truncated-equilibrium theory; it is not by itself a numerical failure. The distinction is between accurately solving each finite truncation and establishing a limit as the cutoff increases.",
+      "metrics": {
+        "l31": {
+          "label": "L31 final E\u2082/E",
+          "value": 0.8141421151116981
+        },
+        "l63": {
+          "label": "L63 final E\u2082/E",
+          "value": 0.8984402847901349
+        },
+        "l127": {
+          "label": "L127 final E\u2082/E",
+          "value": 0.9086927094376229
+        },
+        "profile": {
+          "label": "L63\u2192127 final P\u2082 discrepancy",
+          "value": 19.770948513546454,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "shared-mixed456-jax-l63-l127-comparison--comparison.png",
+          "alt": "Comparison of degree-two profiles at L63 and L127",
+          "caption": "Both calculations use dt=0.001. Truncation still materially affects the degree-two profile by t=10."
+        },
+        {
+          "src": "shared-mixed456-jax-l127-dt-comparison--comparison.png",
+          "alt": "L127 time-step refinement",
+          "caption": "At fixed L127, halving dt from 0.001 to 0.0005 gives a much smaller profile difference. Small invariant drift alone does not ensure spatial resolution."
+        }
+      ],
+      "links": [
+        {
+          "href": "shared-mixed456-jax-l31-l63-comparison--comparison.json",
+          "label": "L31 to L63 measurements"
+        },
+        {
+          "href": "shared-mixed456-jax-l63-l127-comparison--comparison.json",
+          "label": "L63 to L127 measurements"
+        },
+        {
+          "href": "shared-mixed456-jax-l127-dt-comparison--comparison.json",
+          "label": "L127 time-step measurements"
+        }
+      ]
+    },
+    {
+      "id": "shared-mixed456-jax-cpu-gpu",
+      "label": "CPU and GPU \u00b7 same numerical experiment",
+      "status": "completed",
+      "case": "validation",
+      "spectral_L": 63,
+      "dt": 0.001,
+      "t_final": 10.0,
+      "summary": "At identical L63, dt=0.001, shared initial coefficients and 64-bit precision, CPU and NVIDIA A100 runs agree to about 3.2\u00d710\u207b\u00b9\u00b9 in the final amplitude-inclusive P\u2082 profile. This checks device consistency. It does not test spectral truncation or a turbulent end state.",
+      "metrics": {
+        "profile": {
+          "label": "Final relative P\u2082 discrepancy",
+          "value": 3.205621685114164e-11
+        },
+        "energy_norm": {
+          "label": "Maximum total-energy-normalized discrepancy",
+          "value": 3.0384834538960057e-11
+        }
+      },
+      "figures": [],
+      "links": [
+        {
+          "href": "shared-mixed456-jax-l63-cpu-gpu-comparison--comparison.json",
+          "label": "Device comparison measurements"
+        },
+        {
+          "href": "shared-mixed456-jax-l63-halfdt--summary.json",
+          "label": "CPU settings and diagnostics"
+        },
+        {
+          "href": "shared-mixed456-jax-gpu-l63--summary.json",
+          "label": "GPU settings and diagnostics"
+        }
+      ]
+    },
+    {
+      "id": "jax-unity-benchmark",
+      "label": "Independent spectral solver \u00b7 CPU and GPU validation",
+      "status": "completed",
+      "case": "validation",
+      "summary": "All 17 spectral and runner tests passed in each Unity allocation. At L=63, 100 warm JAX steps took 3.705 s on the CPU allocation and 0.06074 s on the GPU allocation. The same equations and inputs were used at each L. An A100 allocation was requested and CUDA execution was recorded; the model string was not logged. These are separate-hardware, single-observation timings, excluding compilation and output, and do not measure speedup over Fortran or long-time flow behavior.",
+      "metrics": {
+        "cpu": {
+          "label": "CPU warm 100 steps \u00b7 L63",
+          "value": 3.7050946929957718,
+          "unit": "s"
+        },
+        "gpu": {
+          "label": "GPU warm 100 steps \u00b7 L63",
+          "value": 0.060736816143617034,
+          "unit": "s"
+        },
+        "tests": {
+          "label": "Tests passed per backend",
+          "value": 17
+        },
+        "parity": {
+          "label": "GPU / NumPy coefficient difference",
+          "value": 2.7813992128423036e-15
+        }
+      },
+      "figures": [
+        {
+          "src": "jax-unity-benchmark--benchmark.png",
+          "alt": "Measured warm and first-compilation times of the independent spectral solver on separate Unity CPU and CUDA GPU allocations at degrees 15, 31, and 63.",
+          "caption": "Warm advancement is synchronized and excludes compilation, host transfer, diagnostics, and file output. Startup cost is shown separately. Same method and inputs at each L; different CPU and GPU allocations."
+        }
+      ],
+      "links": [
+        {
+          "href": "jax-unity-benchmark--summary.json",
+          "label": "Benchmark measurements and limits"
+        },
+        {
+          "href": "jax-unity-benchmark--benchmark.pdf",
+          "label": "Download figure PDF"
+        }
+      ]
+    },
+    {
+      "id": "fig5-ng200-s1",
+      "label": "Figure 5 protocol \u00b7 NG200 viscous and inviscid pair",
+      "status": "completed",
+      "case": "fig5",
+      "ng": 200,
+      "seed": 1,
+      "t_final": 2.638937829015426,
+      "summary": "Six snapshots span one prescribed degree-six Rossby\u2013Haurwitz period with \u03a9=50 about y. The inviscid recurrence shape error is 1.120%, down from 11.61% at NG48. A separate end-point phase fit gives a 0.03027% cycle offset; the plotted recurrence is not phase-corrected. The legacy-viscous row retains 98.16% of its projected amplitude. Its grid-dependent viscosity is smaller than at NG48, so the damping change is not a fixed-viscosity convergence test. This is a new seeded realization.",
+      "metrics": {
+        "recurrence": {
+          "label": "Inviscid recurrence shape error",
+          "value": 1.1200473173550205,
+          "unit": "%"
+        },
+        "phase": {
+          "label": "Separate fitted phase offset",
+          "value": 0.03027177770378802,
+          "unit": "% cycle"
+        },
+        "energy": {
+          "label": "Inviscid maximum energy drift",
+          "value": 1.1618860134970972e-06,
+          "unit": "%"
+        },
+        "enstrophy": {
+          "label": "Inviscid relative-enstrophy change",
+          "value": 0.011776912290686517,
+          "unit": "%"
+        },
+        "pv": {
+          "label": "Inviscid PV budget drift",
+          "value": 1.5262257711466787e-06,
+          "unit": "%"
+        },
+        "momentum": {
+          "label": "Inviscid inertial momentum change",
+          "value": 0.00032885127266683037
+        }
+      },
+      "figures": [
+        {
+          "src": "fig5-ng200--figure5.png",
+          "alt": "NG200 viscous and inviscid relative-vorticity fields at six times spanning one predicted degree-six wave period.",
+          "caption": "Top: legacy Laplacian viscosity. Bottom: inviscid. Six recorded times use a shared color scale; the last column is the prescribed first recurrence, without fitted rotation."
+        }
+      ],
+      "links": [
+        {
+          "href": "fig5-ng200--measurements.json",
+          "label": "NG200 and NG48 measurements"
+        },
+        {
+          "href": "fig5-ng200--figure5.pdf",
+          "label": "Download paired figure PDF"
+        }
+      ]
+    },
+    {
+      "id": "fig6-ng100-dt-comparison",
+      "label": "Time-step refinement \u00b7 same initial fields",
+      "status": "completed",
+      "case": "refinement",
+      "ng": 100,
+      "seed": 1,
+      "t_final": 60.0,
+      "summary": "The two NG100 runs begin with byte-identical grids and sampled fields. Halving the time-step factor reduces enstrophy drift by 15.5 times. Their degree-two amplitudes remain close while their late-time profiles separate. Chaotic trajectory separation alone is not a convergence verdict; the strong drift reduction is direct evidence that the original time step needs refinement. This comparison tests only P\u2082\u03c8 and monitors degree one separately.",
+      "metrics": {
+        "baseline_enstrophy": {
+          "label": "Baseline enstrophy drift",
+          "value": 16.06142806848223,
+          "unit": "%"
+        },
+        "refined_enstrophy": {
+          "label": "Half-step enstrophy drift",
+          "value": 1.0385732269187598,
+          "unit": "%"
+        },
+        "initial": {
+          "label": "Initial sampled fields",
+          "value": "Identical"
+        },
+        "samples": {
+          "label": "Matched saved times",
+          "value": 601
+        }
+      },
+      "figures": [
+        {
+          "src": "fig6-ng100-dt-comparison--comparison.png",
+          "alt": "Degree-two profile, amplitude, and energy comparison under time-step refinement",
+          "caption": "Common saved times without interpolation or fitted rotation. The profile difference retains amplitude; normalized pattern difference and amplitude ratio are displayed separately. \u03a9=0 gives zero prescribed speed."
+        }
+      ],
+      "links": [
+        {
+          "href": "fig6-ng100-dt-comparison--comparison.json",
+          "label": "Comparison measurements"
+        },
+        {
+          "href": "fig6-inviscid-ng100-s1--summary.json",
+          "label": "Baseline diagnostics"
+        },
+        {
+          "href": "fig6-inviscid-ng100-s1-halfdt--summary.json",
+          "label": "Half-step diagnostics"
+        }
+      ]
+    },
     {
       "id": "fig5-ng48-s1",
       "label": "Figure 5 protocol \u00b7 coarse viscous and inviscid pair",
@@ -91,9 +448,14 @@
           "caption": "Figure 6 quantities: normalized real coefficients and E\u2082/E for a new seeded realization."
         },
         {
+          "src": "fig6-inviscid-ng24-s1--profile_persistence.png",
+          "alt": "Amplitude-inclusive degree-two persistence",
+          "caption": "Only the degree-two projection is compared, with amplitude retained and the prescribed RH rotation removed. Degree one and higher degrees are outside this profile test. Here \u03a9=0, so the prescribed speed vanishes."
+        },
+        {
           "src": "fig6-inviscid-ng24-s1--coherence.png",
           "alt": "Two-time degree-two pattern distances",
-          "caption": "Pattern distance at several waiting times. Finite observation windows do not establish eventual stationarity."
+          "caption": "Pattern distance at several waiting times. Finite observation windows do not establish eventual persistence of degree two in its prescribed frame."
         },
         {
           "src": "fig6-inviscid-ng24-s1--shape.png",
@@ -150,9 +512,14 @@
           "caption": "Energy condensation persists, while the five normalized degree-two coefficients continue to evolve."
         },
         {
+          "src": "extended-inviscid-ng24-s1--profile_persistence.png",
+          "alt": "Amplitude-inclusive degree-two persistence",
+          "caption": "Only the degree-two projection is compared, with amplitude retained and the prescribed RH rotation removed. Degree one and higher degrees are outside this profile test. Here \u03a9=0, so the prescribed speed vanishes."
+        },
+        {
           "src": "extended-inviscid-ng24-s1--coherence.png",
           "alt": "Pattern distances at multiple ages through time600",
-          "caption": "Raw normalized-profile distance at several waiting times. Short fixed-lag coherence alone is insufficient to establish settling."
+          "caption": "Raw normalized-profile distance at several waiting times. Short fixed-lag coherence alone is insufficient to establish degree-two freezing in its prescribed frame."
         },
         {
           "src": "extended-inviscid-ng24-s1--shape.png",
@@ -173,81 +540,307 @@
       ]
     },
     {
-      "id": "fig5-inviscid-ng200-s1",
-      "label": "Figure 5 \u00b7 paper-resolution inviscid wave",
-      "status": "running",
-      "case": "fig5",
-      "ng": 200,
-      "seed": 1,
-      "t_target": 2.638937829015426,
-      "cfl": 0.1,
-      "summary": "Degree 6, \u03a9=50 about y, through one predicted period. NG200 has 241,882 degrees of freedom and equivalent harmonic cutoff 490.8, matching the paper\u2019s general grid size. Seeded realization; results pending."
-    },
-    {
-      "id": "fig5-legacy-ng200-s1",
-      "label": "Figure 5 \u00b7 paper-resolution legacy-viscous wave",
-      "status": "running",
-      "case": "fig5",
-      "ng": 200,
-      "seed": 1,
-      "t_target": 2.638937829015426,
-      "cfl": 0.1,
-      "summary": "Degree 6, \u03a9=50 about y, through one predicted period. NG200 has 241,882 degrees of freedom and equivalent harmonic cutoff 490.8, matching the paper\u2019s general grid size. Seeded realization; results pending."
-    },
-    {
       "id": "fig6-inviscid-ng100-s1",
-      "label": "Figure 6 \u00b7 paper-resolution inviscid run",
-      "status": "running",
+      "label": "Figure 6 \u00b7 paper-resolution baseline",
+      "status": "completed",
       "case": "fig6",
       "ng": 100,
       "seed": 1,
-      "t_target": 60.0,
       "cfl": 0.1,
-      "summary": "Initially equal discrete energy in degrees 4, 5, 6 and zero target angular momentum, with \u03a9=0. NG100 has 58,146 degrees of freedom and equivalent cutoff 240.1, matching Figure 6. Results pending."
+      "t_final": 60.0,
+      "summary": "Degree two reaches 89.3% of the energy, but enstrophy increases 16.1% by t=60. Small energy drift alone therefore does not establish numerical accuracy. This \u03a9=0 control has zero prescribed RH speed; its evolving degree-two profile cannot yet support a conclusion about asymptotic freezing. Longer continuation is paused for accuracy checks.",
+      "metrics": {
+        "degree2": {
+          "label": "Final E\u2082/E",
+          "value": 0.8928436471672548
+        },
+        "energy": {
+          "label": "Maximum energy drift",
+          "value": 0.033916435518578085,
+          "unit": "%"
+        },
+        "enstrophy": {
+          "label": "Maximum enstrophy drift",
+          "value": 16.061428068482236,
+          "unit": "%"
+        },
+        "degree1": {
+          "label": "Maximum E\u2081/E",
+          "value": 0.002807901589029975,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "fig6-inviscid-ng100-s1--figure6.png",
+          "alt": "Degree-two energy fraction and normalized coefficients",
+          "caption": "Energy condensation and the five normalized degree-two coefficients. Their evolution alone does not measure amplitude-inclusive profile persistence."
+        },
+        {
+          "src": "fig6-inviscid-ng100-s1--profile_persistence.png",
+          "alt": "Amplitude-inclusive degree-two profile changes at several waiting times",
+          "caption": "Only P\u2082\u03c8 enters this distance, including its amplitude. \u03a9=0 makes the prescribed moving frame coincide with the recorded frame. Degree one is excluded."
+        },
+        {
+          "src": "fig6-inviscid-ng100-s1--diagnostics.png",
+          "alt": "Energy, enstrophy, and angular-momentum accuracy checks",
+          "caption": "Conservation errors limit the interpretation of long-time behavior; angular momentum is monitored independently of the degree-two profile."
+        }
+      ],
+      "links": [
+        {
+          "href": "fig6-inviscid-ng100-s1--summary.json",
+          "label": "Measured summary and settings"
+        }
+      ]
     },
     {
       "id": "fig6-inviscid-ng100-s1-halfdt",
       "label": "Figure 6 \u00b7 paper-resolution half time-step control",
-      "status": "running",
+      "status": "completed",
       "case": "fig6",
       "ng": 100,
       "seed": 1,
-      "t_target": 60.0,
       "cfl": 0.05,
-      "summary": "Initially equal discrete energy in degrees 4, 5, 6 and zero target angular momentum, with \u03a9=0. NG100 has 58,146 degrees of freedom and equivalent cutoff 240.1, matching Figure 6. CFL is halved to assess time-integration error. Results pending."
+      "t_final": 60.0,
+      "summary": "Starting from exactly the same sampled initial fields as the baseline, halving the time-step factor reduces enstrophy drift from 16.1% to 1.04%. The final degree-two energy share remains close at 89.4%. The improvement exposes a substantial time-integration error; more refinement is needed before interpreting a long-time degree-two profile.",
+      "metrics": {
+        "degree2": {
+          "label": "Final E\u2082/E",
+          "value": 0.8942130616245599
+        },
+        "energy": {
+          "label": "Maximum energy drift",
+          "value": 0.0026849049875228115,
+          "unit": "%"
+        },
+        "enstrophy": {
+          "label": "Maximum enstrophy drift",
+          "value": 1.0385732269187562,
+          "unit": "%"
+        },
+        "degree1": {
+          "label": "Maximum E\u2081/E",
+          "value": 0.0019577085631949094,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "fig6-inviscid-ng100-s1-halfdt--figure6.png",
+          "alt": "Degree-two energy fraction and normalized coefficients",
+          "caption": "Energy condensation and the five normalized degree-two coefficients. Their evolution alone does not measure amplitude-inclusive profile persistence."
+        },
+        {
+          "src": "fig6-inviscid-ng100-s1-halfdt--profile_persistence.png",
+          "alt": "Amplitude-inclusive degree-two profile changes at several waiting times",
+          "caption": "Only P\u2082\u03c8 enters this distance, including its amplitude. \u03a9=0 makes the prescribed moving frame coincide with the recorded frame. Degree one is excluded."
+        },
+        {
+          "src": "fig6-inviscid-ng100-s1-halfdt--diagnostics.png",
+          "alt": "Energy, enstrophy, and angular-momentum accuracy checks",
+          "caption": "Conservation errors limit the interpretation of long-time behavior; angular momentum is monitored independently of the degree-two profile."
+        }
+      ],
+      "links": [
+        {
+          "href": "fig6-inviscid-ng100-s1-halfdt--summary.json",
+          "label": "Measured summary and settings"
+        }
+      ]
     },
     {
       "id": "long-inviscid-ng48-s1",
-      "label": "Long-time control \u00b7 baseline",
-      "status": "queued",
+      "label": "Long-time control \u00b7 baseline to t=200",
+      "status": "completed",
       "case": "long_time",
       "ng": 48,
       "seed": 1,
-      "t_target": 200.0,
       "cfl": 0.1,
-      "summary": "NG48 extension to t=200, scheduled after a primary run to limit concurrent jobs. Comparisons across time step and seed will assess the robustness of condensation and pattern persistence. These controls do not by themselves establish ensemble symmetry."
+      "t_final": 199.9999999999972,
+      "summary": "At t=200 degree two carries 87.9% of the energy. Enstrophy increases 19.4% and energy increases 0.218%; angular momentum also drifts. The half-step companion substantially reduces energy and enstrophy drift. The long observed evolution is informative as a numerical control, but cannot determine the continuum end state.",
+      "metrics": {
+        "e2": {
+          "label": "Final E\u2082/E",
+          "value": 0.8788368716946775
+        },
+        "energy": {
+          "label": "Maximum energy drift",
+          "value": 0.21804771710960394,
+          "unit": "%"
+        },
+        "pvz": {
+          "label": "Maximum enstrophy drift",
+          "value": 19.397084503937606,
+          "unit": "%"
+        },
+        "momentum": {
+          "label": "Maximum angular-momentum change",
+          "value": 0.17366924866988137
+        }
+      },
+      "figures": [
+        {
+          "src": "long-inviscid-ng48-s1--profile_persistence.png",
+          "alt": "Degree-two amplitude-inclusive persistence over a long run",
+          "caption": "Only P\u2082\u03c8 is compared, including amplitude; degree one is monitored separately. \u03a9=0 gives zero prescribed speed."
+        },
+        {
+          "src": "long-inviscid-ng48-s1--diagnostics.png",
+          "alt": "Conservation diagnostics over a long run",
+          "caption": "The numerical drift limits any asymptotic interpretation."
+        }
+      ],
+      "links": [
+        {
+          "href": "long-inviscid-ng48-s1--summary.json",
+          "label": "Measured summary and settings"
+        },
+        {
+          "href": "long-inviscid-ng48-dt-comparison--comparison.json",
+          "label": "Long-run timestep comparison"
+        }
+      ]
     },
     {
       "id": "long-inviscid-ng48-s1-halfdt",
-      "label": "Long-time control \u00b7 half time step",
-      "status": "queued",
+      "label": "Long-time control \u00b7 half time step to t=200",
+      "status": "completed",
       "case": "long_time",
       "ng": 48,
       "seed": 1,
-      "t_target": 200.0,
       "cfl": 0.05,
-      "summary": "NG48 extension to t=200, scheduled after a primary run to limit concurrent jobs. Comparisons across time step and seed will assess the robustness of condensation and pattern persistence. These controls do not by themselves establish ensemble symmetry."
+      "t_final": 199.9999999999972,
+      "summary": "Halving the time-step factor reduces enstrophy drift from 19.4% to 1.92% and energy drift from 0.218% to 0.0220%, but angular-momentum error remains and is larger for this trajectory. The run retains 88.6% of energy in degree two. These numerical limits prevent an inference that P\u2082\u03c8 eventually freezes.",
+      "metrics": {
+        "e2": {
+          "label": "Final E\u2082/E",
+          "value": 0.8855296550592521
+        },
+        "energy": {
+          "label": "Maximum energy drift",
+          "value": 0.021950709939839327,
+          "unit": "%"
+        },
+        "pvz": {
+          "label": "Maximum enstrophy drift",
+          "value": 1.9150066829769095,
+          "unit": "%"
+        },
+        "momentum": {
+          "label": "Maximum angular-momentum change",
+          "value": 0.30077381375625484
+        }
+      },
+      "figures": [
+        {
+          "src": "long-inviscid-ng48-s1-halfdt--profile_persistence.png",
+          "alt": "Degree-two amplitude-inclusive persistence over a long run",
+          "caption": "Only P\u2082\u03c8 is compared, including amplitude; degree one is monitored separately. \u03a9=0 gives zero prescribed speed."
+        },
+        {
+          "src": "long-inviscid-ng48-s1-halfdt--diagnostics.png",
+          "alt": "Conservation diagnostics over a long run",
+          "caption": "The numerical drift limits any asymptotic interpretation."
+        }
+      ],
+      "links": [
+        {
+          "href": "long-inviscid-ng48-s1-halfdt--summary.json",
+          "label": "Measured summary and settings"
+        },
+        {
+          "href": "long-inviscid-ng48-dt-comparison--comparison.json",
+          "label": "Long-run timestep comparison"
+        }
+      ]
     },
     {
       "id": "long-inviscid-ng48-s2",
-      "label": "Long-time control \u00b7 second seed",
-      "status": "queued",
+      "label": "Long-time control \u00b7 second seed to t=200",
+      "status": "completed",
       "case": "long_time",
       "ng": 48,
       "seed": 2,
-      "t_target": 200.0,
       "cfl": 0.1,
-      "summary": "NG48 extension to t=200, scheduled after a primary run to limit concurrent jobs. Comparisons across time step and seed will assess the robustness of condensation and pattern persistence. These controls do not by themselves establish ensemble symmetry."
+      "t_final": 199.9999999999972,
+      "summary": "Degree two holds 92.0% of the energy at t=200. Its profile continues to evolve, and the observed persistence intervals vary with waiting time. Enstrophy increases 17.9% and energy increases 0.203%, so this coarse run does not determine whether P\u2082\u03c8 eventually freezes in its prescribed frame. The degree-one constraint is checked separately.",
+      "metrics": {
+        "degree2": {
+          "label": "Final E\u2082/E",
+          "value": 0.9197593952391657
+        },
+        "energy": {
+          "label": "Maximum energy drift",
+          "value": 0.2026498114926671,
+          "unit": "%"
+        },
+        "enstrophy": {
+          "label": "Maximum enstrophy drift",
+          "value": 17.933294235404887,
+          "unit": "%"
+        },
+        "degree1": {
+          "label": "Maximum E\u2081/E",
+          "value": 0.05510622858179387,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "long-inviscid-ng48-s2--figure6.png",
+          "alt": "Degree-two energy fraction and normalized coefficients",
+          "caption": "Energy condensation and the five normalized degree-two coefficients. Their evolution alone does not measure amplitude-inclusive profile persistence."
+        },
+        {
+          "src": "long-inviscid-ng48-s2--profile_persistence.png",
+          "alt": "Amplitude-inclusive degree-two profile changes at several waiting times",
+          "caption": "Only P\u2082\u03c8 enters this distance, including its amplitude. \u03a9=0 makes the prescribed moving frame coincide with the recorded frame. Degree one is excluded."
+        },
+        {
+          "src": "long-inviscid-ng48-s2--diagnostics.png",
+          "alt": "Energy, enstrophy, and angular-momentum accuracy checks",
+          "caption": "Conservation errors limit the interpretation of long-time behavior; angular momentum is monitored independently of the degree-two profile."
+        }
+      ],
+      "links": [
+        {
+          "href": "long-inviscid-ng48-s2--summary.json",
+          "label": "Measured summary and settings"
+        }
+      ]
+    },
+    {
+      "id": "shared-mixed456-jax-gpu-l255-r2",
+      "label": "Higher harmonic cutoff \u00b7 spatial refinement",
+      "status": "queued",
+      "case": "refinement",
+      "L": 255,
+      "dt": 0.0005,
+      "t_target": 10,
+      "seed": 7,
+      "summary": "Same shared degree-four-to-six initial vorticity and \u03a9=3. This higher-cutoff check tests whether degree-two results approach agreement as spatial resolution increases. An initial compilation attempt exceeded its host-memory allocation; the retry requests 32 GB and has not produced a result yet."
+    },
+    {
+      "id": "fig6-inviscid-ng100-s1-quarterdt",
+      "label": "Figure6 \u00b7 quarter-step control",
+      "status": "running",
+      "case": "refinement",
+      "ng": 100,
+      "cfl": 0.025,
+      "t_target": 60.0,
+      "seed": 1,
+      "summary": "Original seed and initial field retained. Further timestep refinement checks the large enstrophy drift found at the two larger timesteps; no longer-time extension is inferred from this submission."
+    },
+    {
+      "id": "shared-mixed456-jax-gpu-t60",
+      "label": "Finite Galerkin dynamics \u00b7 longer observation",
+      "status": "running",
+      "case": "long_time",
+      "t_target": 60.0,
+      "seed": 7,
+      "dt": 0.0005,
+      "summary": "Shared mixed-degree \u03a9=3 initial field at L63 and L127, run sequentially on a GPU with double-precision support. Tests growing-age persistence of P\u2082\u03c8 in its prescribed RH frame. These accurately defined finite truncations need not give pointwise identical chaotic trajectories; a cutoff-limit conclusion requires separate evidence."
     }
   ]
 }

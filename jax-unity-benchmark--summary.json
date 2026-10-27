@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-27T13:18:29.252906+00:00",
+  "status": "completed",
+  "title": "Independent spectral solver: Unity CPU and GPU timing",
+  "scope": "Same dealiased harmonic Galerkin method and inputs, different CPU and GPU allocations. This is not a Fortran performance comparison or a long-time flow result.",
+  "hardware": {
+    "cpu": {
+      "reported_platform": "cpu",
+      "processor_model": "not recorded in fetched benchmark logs"
+    },
+    "gpu": {
+      "allocation_requested": "A100",
+      "reported_platform": "cuda",
+      "processor_model": "not recorded in fetched benchmark logs"
+    },
+    "allocation_comparison": "Measurements were made in separate allocations; CPU host hardware is not controlled between them."
+  },
+  "software": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "precision": "float64 physical fields and complex128 coefficients",
+  "timing_definition": "Wall time for 100 already-compiled steps, with the result synchronized before stopping the clock. Initial transfer, final host copy, diagnostics, and file I/O are outside this warm interval. First compilation plus one step is separately reported.",
+  "sample_size": "One timing observation per backend and truncation; no uncertainty estimate.",
+  "coefficient_error_definition": "Frobenius norm of the difference of stored positive-m coefficient arrays divided by the NumPy reference array norm; each allocation has its own NumPy reference.",
+  "validation": {
+    "cpu": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_wall_seconds": 10.896
+    },
+    "gpu": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_wall_seconds": 18.141
+    }
+  },
+  "source_sha256": {
+    "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+    "tests/test_spectral.py": "a3e392dfe724a6624c902d6d515ea64b8dc2ece405cbdb2d10002b43dffa1196",
+    "tests/benchmark_spectral.py": "8a2b0fc3922f059cb6c8ee65ce222475d36d5e2ad78915d554f5c63ba13791ce"
+  },
+  "evidence_sha256": {
+    "cpu_benchmark": "be8cb07b0e655db2c6a016ab67a319e75c86956a1b6a8d4cd064b505b722260c",
+    "gpu_benchmark": "fcca2d80142a59031832cc2bab70b17383613beaf91171e0e029c337b1b753cb",
+    "cpu_tests": "eeb63adc0c252562c88fbe64dbdd38f6e0ed437b1e40169152cb32ec45578a02",
+    "gpu_tests": "a068344bd12f4d78573b752cf660617d0100f4fed99cf70afc3900a2726f1ab5"
+  },
+  "measurements": [
+    {
+      "L": 15,
+      "nlat": 23,
+      "nlon": 46,
+      "dt": 0.001,
+      "steps": 100,
+      "omega": 2.0,
+      "nu": 0.0,
+      "seed": 23,
+      "initial_degree_one_zero": true,
+      "cpu_warm_seconds": 0.046852955128997564,
+      "gpu_warm_seconds": 0.06007008510641754,
+      "cpu_first_compile_plus_one_step_seconds": 0.6225943178869784,
+      "gpu_first_compile_plus_one_step_seconds": 1.665084560168907,
+      "cpu_over_gpu_warm_wall_time_ratio_different_allocations": 0.7799715123758343,
+      "cpu_vs_its_numpy_reference_relative_coefficient_difference": 1.4105628039233235e-17,
+      "gpu_vs_its_numpy_reference_relative_coefficient_difference": 2.6868373293673416e-15,
+      "cpu_endpoint_relative_energy_change": 5.995204332975845e-15,
+      "gpu_endpoint_relative_energy_change": 7.105427357601002e-15
+    },
+    {
+      "L": 31,
+      "nlat": 47,
+      "nlon": 94,
+      "dt": 0.001,
+      "steps": 100,
+      "omega": 2.0,
+      "nu": 0.0,
+      "seed": 23,
+      "initial_degree_one_zero": true,
+      "cpu_warm_seconds": 0.3557940600439906,
+      "gpu_warm_seconds": 0.06653754995204508,
+      "cpu_first_compile_plus_one_step_seconds": 0.6044517641421407,
+      "gpu_first_compile_plus_one_step_seconds": 2.2701326969545335,
+      "cpu_over_gpu_warm_wall_time_ratio_different_allocations": 5.347267224302945,
+      "cpu_vs_its_numpy_reference_relative_coefficient_difference": 1.1558682768354185e-17,
+      "gpu_vs_its_numpy_reference_relative_coefficient_difference": 2.7270922388885734e-15,
+      "cpu_endpoint_relative_energy_change": 4.6629367034256575e-15,
+      "gpu_endpoint_relative_energy_change": 4.6629367034256575e-15
+    },
+    {
+      "L": 63,
+      "nlat": 95,
+      "nlon": 190,
+      "dt": 0.001,
+      "steps": 100,
+      "omega": 2.0,
+      "nu": 0.0,
+      "seed": 23,
+      "initial_degree_one_zero": true,
+      "cpu_warm_seconds": 3.7050946929957718,
+      "gpu_warm_seconds": 0.060736816143617034,
+      "cpu_first_compile_plus_one_step_seconds": 0.7366605158895254,
+      "gpu_first_compile_plus_one_step_seconds": 1.8914686881471425,
+      "cpu_over_gpu_warm_wall_time_ratio_different_allocations": 61.0024516964271,
+      "cpu_vs_its_numpy_reference_relative_coefficient_difference": 8.80767515399913e-18,
+      "gpu_vs_its_numpy_reference_relative_coefficient_difference": 2.7813992128423036e-15,
+      "cpu_endpoint_relative_energy_change": 5.995204332975845e-15,
+      "gpu_endpoint_relative_energy_change": 4.6629367034256575e-15
+    }
+  ],
+  "limitations": [
+    "GPU model was requested as A100; CUDA device execution is recorded, but the hardware model string was not captured in these logs.",
+    "Warm advancement time is not total experiment cost; GPU compilation cost is larger in these observations.",
+    "Different truncations retain different initial mode sets; CPU and GPU use identical inputs at each truncation.",
+    "These short smooth-flow tests do not establish a turbulent stable timestep, convergence, or degree-two long-time persistence."
+  ]
+}

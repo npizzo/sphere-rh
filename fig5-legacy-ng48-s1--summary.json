@@ -36,10 +36,8 @@
       "architecture": "x86_64",
       "cpus_requested": "1",
       "environment": "slurm",
-      "host_sha256": "290161c0f228bc50",
       "os": "Linux",
-      "slurm_array_task_id": null,
-      "slurm_job_id": "66167318"
+      "slurm_array_task_id": null
     },
     "finished_at": "2026-10-27T00:35:30+00:00",
     "frame": "rotating",
@@ -105,7 +103,7 @@
     "viscosity_operator": "legacy_laplacian",
     "wall_seconds": 464.64160221396014
   },
-  "assessment": "Measured finite-duration run; does not establish asymptotic stationarity.",
+  "assessment": "Measured finite-duration run; does not establish asymptotic freezing of P6 psi in the prescribed RH frame.",
   "records": 133,
   "first_time": 0.0,
   "last_time": 2.638937829015426,
@@ -119,8 +117,10 @@
   "final_urms": 0.731240028903859,
   "max_relative_energy_change": 0.4652880201286801,
   "max_relative_enstrophy_change": 0.4652565664407921,
+  "final_relative_energy_change": -0.4652880201286801,
+  "final_relative_enstrophy_change": -0.46525656644079205,
   "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.4654453892560303,
-  "max_angular_momentum_change": 0.0028568206324893794,
+  "max_angular_momentum_change": 0.0028568206324919476,
   "max_absolute_circulation": 0.0004667993727151585,
   "max_poisson_relative": 9.944224637588659e-09,
   "demodulation_speed": -2.380952380952381,
@@ -129,6 +129,12 @@
     1.0,
     0.0
   ],
+  "moving_frame_test": {
+    "recorded_frame": "rotating",
+    "definition": "Undo only the prescribed RH rotation of P6 psi. Test that projected profile including amplitude; degree one is excluded and monitored separately as a constraint.",
+    "zero_rotation_control": false,
+    "interpretation": "Nonzero prescribed RH rotation is removed without fitting the observed motion."
+  },
   "coherence_energy_fraction_floor": 1e-06,
   "initial_leakage_reference_fraction": 0.0,
   "coherence_resolved_samples": 133,
@@ -199,6 +205,57 @@
       "distance_at_one_age": null
     }
   ],
+  "profile_persistence": {
+    "definition": "Unnormalized coefficient difference divided by the waiting-time norm; amplitude changes are retained.",
+    "scope": "Tests only P6 psi. Degree one is excluded and monitored separately through angular momentum; other degrees need not freeze.",
+    "curves": [
+      {
+        "waiting_time": 0.0,
+        "max_observed_lag": 2.638937829015426,
+        "max_recorded_frame_distance": 1.5668595275234523,
+        "max_prescribed_moving_frame_distance": 0.2860955389524333,
+        "final_recorded_frame_distance": 0.28609553895243495,
+        "final_prescribed_moving_frame_distance": 0.2860955389524333,
+        "final_amplitude_ratio": 0.7312089995981924
+      },
+      {
+        "waiting_time": 0.5400000000000001,
+        "max_observed_lag": 2.098937829015426,
+        "max_recorded_frame_distance": 1.5679683494028107,
+        "max_prescribed_moving_frame_distance": 0.229030162209879,
+        "final_recorded_frame_distance": 1.0562400713412154,
+        "final_prescribed_moving_frame_distance": 0.229030162209879,
+        "final_amplitude_ratio": 0.7857002241064837
+      },
+      {
+        "waiting_time": 1.0600000000000005,
+        "max_observed_lag": 1.5789378290154255,
+        "max_recorded_frame_distance": 1.5703304026878042,
+        "max_prescribed_moving_frame_distance": 0.17229355670585725,
+        "final_recorded_frame_distance": 1.459213240878787,
+        "final_prescribed_moving_frame_distance": 0.17229355670585725,
+        "final_amplitude_ratio": 0.8392813362508537
+      },
+      {
+        "waiting_time": 1.600000000000001,
+        "max_observed_lag": 1.038937829015425,
+        "max_recorded_frame_distance": 1.571173639394204,
+        "max_prescribed_moving_frame_distance": 0.11459091725953613,
+        "final_recorded_frame_distance": 1.4521282405807174,
+        "final_prescribed_moving_frame_distance": 0.11459091725953613,
+        "final_amplitude_ratio": 0.8936560964091381
+      },
+      {
+        "waiting_time": 2.1200000000000014,
+        "max_observed_lag": 0.5189378290154245,
+        "max_recorded_frame_distance": 1.571981991940683,
+        "max_prescribed_moving_frame_distance": 0.057619028310875633,
+        "final_recorded_frame_distance": 1.0311530013532173,
+        "final_prescribed_moving_frame_distance": 0.057619028310875633,
+        "final_amplitude_ratio": 0.946765041457225
+      }
+    ]
+  },
   "segments": [],
   "warnings": [
     "Demodulation uses prescribed background rotation; an additional degree-one relative flow is not fitted."
@@ -230,33 +287,33 @@
       "samples": [
         {
           "time": 0.0,
-          "relative_shape_error": 0.0017501549033341727,
-          "amplitude_projection": 0.9960926329321821
+          "relative_shape_error": 0.001750151807693593,
+          "amplitude_projection": 0.9960926329324253
         },
         {
           "time": 0.5277875658030852,
-          "relative_shape_error": 0.02425506081759439,
-          "amplitude_projection": 0.92710899213023
+          "relative_shape_error": 0.02425506045713649,
+          "amplitude_projection": 0.9271089921413488
         },
         {
           "time": 1.0555751316061703,
-          "relative_shape_error": 0.04782341185705466,
-          "amplitude_projection": 0.8676483619292379
+          "relative_shape_error": 0.04782341179676643,
+          "amplitude_projection": 0.8676483619334049
         },
         {
           "time": 1.5833626974092554,
-          "relative_shape_error": 0.06995973775886441,
-          "amplitude_projection": 0.8137324393719875
+          "relative_shape_error": 0.06995973766924918,
+          "amplitude_projection": 0.8137324393763083
         },
         {
           "time": 2.1111502632123407,
-          "relative_shape_error": 0.09212404003570779,
-          "amplitude_projection": 0.7662706969409789
+          "relative_shape_error": 0.09212403999581659,
+          "amplitude_projection": 0.7662706969421126
         },
         {
           "time": 2.638937829015426,
-          "relative_shape_error": 0.11490381213514082,
-          "amplitude_projection": 0.7235808403728698
+          "relative_shape_error": 0.1149038120843065,
+          "amplitude_projection": 0.723580840373409
         }
       ],
       "first_period_recurrence": {
