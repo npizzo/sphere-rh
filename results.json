@@ -1,7 +1,96 @@
 {
-  "updated_at": "2026-10-27T14:32:28.615047+00:00",
-  "status": "Matched Fortran/JAX results verified \u00b7 further resolution and longer finite-Galerkin checks submitted",
+  "updated_at": "2026-10-28T20:43:59.111096+00:00",
+  "status": "Completed \u03a950 comparison available \u00b7 automatic updates paused",
   "runs": [
+    {
+      "id": "shared-mixed456-omega50-comparison",
+      "label": "Rotating Figure 6 protocol \u00b7 \u03a9=50 through t=60",
+      "status": "completed",
+      "case": "cross_solver",
+      "ng": 100,
+      "seed": 7,
+      "omega": 50,
+      "t_final": 60.0,
+      "summary": "Both solvers start from the same requested seed-7 harmonic field, with equal energy in degrees four, five and six, target rms speed 1 and zero degree one. This \u03a9=50 rotating variation differs from the paper\u2019s \u03a9=0 Figure 6. Degree two stays below 0.8% of the energy in both runs, ending at 0.118% for Fortran NG100 and 0.188% for JAX L240. Its amplitude-inclusive profile continues changing after the prescribed rotation is removed. These finite-time results do not establish condensation, freezing, or convergence between the methods.",
+      "metrics": {
+        "fortran_e2": {
+          "label": "Fortran final E\u2082/E",
+          "value": 0.11802156262735657,
+          "unit": "%"
+        },
+        "jax_e2": {
+          "label": "JAX final E\u2082/E",
+          "value": 0.18802940080179553,
+          "unit": "%"
+        },
+        "fortran_max_e2": {
+          "label": "Fortran maximum E\u2082/E",
+          "value": 0.7141922461231546,
+          "unit": "%"
+        },
+        "jax_max_e2": {
+          "label": "JAX maximum E\u2082/E",
+          "value": 0.7884971107419354,
+          "unit": "%"
+        },
+        "fortran_pv": {
+          "label": "Fortran PV budget drift / initial relative Z",
+          "value": 0.01333294974862821,
+          "unit": "%"
+        },
+        "jax_pv": {
+          "label": "JAX PV budget drift / initial relative Z",
+          "value": 0.03758833159603263,
+          "unit": "%"
+        }
+      },
+      "figures": [
+        {
+          "src": "shared-mixed456-omega50-comparison--comparison.png",
+          "alt": "Fortran and JAX degree-two energy fractions and amplitude-inclusive profile differences for \u03a950 through time60",
+          "caption": "The energy panel resolves the sub-1% degree-two contribution. Requested harmonic coefficients match; the applied fields differ slightly because Fortran subtracts a discrete compatibility mean and uses different quadrature. Only P\u2082\u03c8 enters profile differences. Degree one is monitored separately."
+        },
+        {
+          "src": "shared-mixed456-omega50-fortran-ng100-t60--figure6.png",
+          "alt": "Fortran NG100 normalized degree-two coefficients in the prescribed Rossby\u2013Haurwitz frame and their small energy fraction",
+          "caption": "Fortran NG100: Figure 6 quantities in the prescribed RH frame. The coefficient curves are normalized; the dashed energy fraction remains near zero on the paper-style 0\u20131 scale. Initial degree one is zero in the requested field; measured numerical leakage is reported separately."
+        },
+        {
+          "src": "shared-mixed456-omega50-jax-l240-t60--figure6.png",
+          "alt": "JAX L240 normalized degree-two coefficients in the prescribed Rossby\u2013Haurwitz frame and their small energy fraction",
+          "caption": "JAX L240: the same quantities from its saved low-degree coefficients and unmodified scalar diagnostics. Normalizing the coefficients does not imply substantial degree-two energy."
+        },
+        {
+          "src": "shared-mixed456-omega50-fortran-ng100-t60--profile_persistence.png",
+          "alt": "Fortran amplitude-inclusive degree-two changes before and after removing the prescribed rotation",
+          "caption": "Fortran: only P\u2082\u03c8 is tested, retaining amplitude. The prescribed speeds are \u221250/3 in the rotating frame and +100/3 in the inertial frame; no speed or orientation is fitted. From waiting time 48.05, the moving-frame relative distance reaches 2.09 over the next 11.95 time units."
+        },
+        {
+          "src": "shared-mixed456-omega50-jax-l240-t60--profile_persistence.png",
+          "alt": "JAX amplitude-inclusive degree-two changes before and after removing the prescribed rotation",
+          "caption": "JAX: the same prescribed-frame test reaches a relative distance of 4.08 from waiting time 48.05 over lag 11.95. The distance is divided by the waiting-time P\u2082 norm. These changing, small-amplitude profiles do not demonstrate a frozen degree-two state."
+        }
+      ],
+      "links": [
+        {
+          "href": "shared-mixed456-omega50-comparison--comparison.json",
+          "label": "Paired measurements and initial-field checks"
+        },
+        {
+          "href": "shared-mixed456-omega50-fortran-ng100-t60--summary.json",
+          "label": "Fortran settings and conservation checks"
+        },
+        {
+          "href": "shared-mixed456-omega50-jax-l240-t60--summary.json",
+          "label": "JAX settings and conservation checks"
+        },
+        {
+          "href": "shared-mixed456-omega50-comparison--comparison.pdf",
+          "label": "Download paired comparison PDF"
+        }
+      ],
+      "L": 240
+    },
     {
       "id": "shared-rh2-validation",
       "label": "Degree-two rotation \u00b7 independent solver comparison",
@@ -813,34 +902,34 @@
     {
       "id": "shared-mixed456-jax-gpu-l255-r2",
       "label": "Higher harmonic cutoff \u00b7 spatial refinement",
-      "status": "queued",
+      "status": "completed",
       "case": "refinement",
       "L": 255,
       "dt": 0.0005,
-      "t_target": 10,
       "seed": 7,
-      "summary": "Same shared degree-four-to-six initial vorticity and \u03a9=3. This higher-cutoff check tests whether degree-two results approach agreement as spatial resolution increases. An initial compilation attempt exceeded its host-memory allocation; the retry requests 32 GB and has not produced a result yet."
+      "summary": "The L255, \u03a9=3 calculation has completed. Its results are awaiting review and publication. This shared-initial-field comparison will test cutoff sensitivity; no new convergence conclusion is asserted here.",
+      "t_final": 10
     },
     {
       "id": "fig6-inviscid-ng100-s1-quarterdt",
       "label": "Figure6 \u00b7 quarter-step control",
-      "status": "running",
+      "status": "completed",
       "case": "refinement",
       "ng": 100,
       "cfl": 0.025,
-      "t_target": 60.0,
       "seed": 1,
-      "summary": "Original seed and initial field retained. Further timestep refinement checks the large enstrophy drift found at the two larger timesteps; no longer-time extension is inferred from this submission."
+      "summary": "The quarter-step calculation to t=60 has completed with the original seed and initial field retained. Its results are awaiting review and publication. It tests the large enstrophy drift found at the two larger time steps.",
+      "t_final": 60.0
     },
     {
       "id": "shared-mixed456-jax-gpu-t60",
       "label": "Finite Galerkin dynamics \u00b7 longer observation",
-      "status": "running",
+      "status": "completed",
       "case": "long_time",
-      "t_target": 60.0,
       "seed": 7,
       "dt": 0.0005,
-      "summary": "Shared mixed-degree \u03a9=3 initial field at L63 and L127, run sequentially on a GPU with double-precision support. Tests growing-age persistence of P\u2082\u03c8 in its prescribed RH frame. These accurately defined finite truncations need not give pointwise identical chaotic trajectories; a cutoff-limit conclusion requires separate evidence."
+      "summary": "The L63 and L127, \u03a9=3 calculations to t=60 have completed. Their results are awaiting review and publication. They test growing-age persistence of P\u2082\u03c8 in its prescribed RH frame; a cutoff-limit conclusion requires separate evidence.",
+      "t_final": 60.0
     }
   ]
 }
