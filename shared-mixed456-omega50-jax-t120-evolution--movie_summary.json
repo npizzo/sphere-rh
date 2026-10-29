@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "experiment": "JAX Omega50 L240; original seed7 equal energy in degrees4,5,6; continued0\u2192120",
+  "sources": [
+    "shared-mixed456-omega50-jax-l240-t60",
+    "shared-mixed456-omega50-jax-l240-t120"
+  ],
+  "joined_saved_diagnostics": 2401,
+  "joined_full_snapshots": 61,
+  "restart_boundary_time": 60.0,
+  "restart_degree2_and_full_snapshot_exact_match": true,
+  "snapshot_diagnostic_degree2_max_absolute_difference": 0.0,
+  "no_new_integration": true,
+  "no_time_interpolation": true,
+  "final_degree2_energy_fraction": 0.0003267188584832019,
+  "max_degree2_energy_fraction": 0.007884971107419354,
+  "poster_time": 96.0,
+  "videos": [
+    {
+      "file": "degree2_evolution.mp4",
+      "poster": "degree2_poster.png",
+      "frame_count": 2401,
+      "saved_time_interval": 0.05,
+      "display_fps": 24,
+      "simulation_time_per_playback_second": 1.2000000000000002,
+      "frame_start": 0.0,
+      "frame_end": 120.0,
+      "field": "degree-two streamfunction, real orthonormal spherical harmonics",
+      "color_limits": [
+        -0.081,
+        0.081
+      ],
+      "color_scale_fixed": true,
+      "normalization": "none",
+      "recorded_frame": "rotating with background Omega50",
+      "demodulation_speed_relative_to_recorded_frame": -16.666666666666668,
+      "phase_time_origin": 0.0,
+      "spatial_render_grid": {
+        "longitude_cells": 280,
+        "mu_cells": 130,
+        "latitude_coordinate": "mu=sin(latitude)",
+        "raster_display_resize": "bicubic; spatial display only"
+      },
+      "temporal_interpolation": "none; each frame is a saved diagnostic time",
+      "encoding": {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 800,
+        "pix_fmt": "yuv420p",
+        "avg_frame_rate": "24/1",
+        "duration": "100.041667",
+        "nb_frames": "2401",
+        "bytes": 8522053,
+        "sha256": "32585b30f5c6c487725fd9531a7d39522d49c3e0e85168705f3a19c6bb5cf869"
+      }
+    },
+    {
+      "file": "full_flow_snapshots.mp4",
+      "poster": "full_flow_poster.png",
+      "distinct_snapshots": 61,
+      "frame_count": 732,
+      "saved_time_interval": 2.0,
+      "held_frames_per_snapshot": 12,
+      "display_fps": 24,
+      "field": "relative vorticity; all retained degrees including degree one",
+      "frame": "recorded coordinates rotating with background Omega50",
+      "frame_start": 0.0,
+      "frame_end": 120.0,
+      "color_limits": [
+        -34,
+        34
+      ],
+      "color_scale_fixed": true,
+      "normalization": "none",
+      "spatial_render_grid": {
+        "longitude_cells": 1120,
+        "mu_cells": 360,
+        "latitude_coordinate": "mu=sin(latitude)",
+        "synthesis": "direct degree240 evaluation at uniform pixel centers"
+      },
+      "independent_initial_field_synthesis_check": {
+        "sample_points": 6,
+        "reference": "scipy associated-Legendre real_basis, known initial degrees4..6",
+        "max_absolute_difference_after_float32_render_storage": 1.6657227952521225e-07
+      },
+      "temporal_interpolation": "none; each saved field repeated12 times",
+      "limitation": "The 2-unit snapshot interval strongly undersamples rapid Rossby propagation. Apparent direction or speed cannot be inferred from adjacent frames.",
+      "encoding": {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 800,
+        "pix_fmt": "yuv420p",
+        "avg_frame_rate": "24/1",
+        "duration": "30.500000",
+        "nb_frames": "732",
+        "bytes": 3965929,
+        "sha256": "4b8b39a7cfe8bbe6e28a43ff6cc2246209e0cd50619b1637dbb16fc0ce1046c4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "schema_version": 1,
+  "run": "shared-mixed456-omega50-jax-l240-t120",
+  "metadata": {
+    "schema_version": 1,
+    "id": "shared-mixed456-omega50-jax-l240-t120",
+    "label": "JAX L240 \u00b7 \u03a9=50 \u00b7 t=0\u2013120",
+    "case": "fig6_protocol_omega50",
+    "status": "completed",
+    "created_at": "2026-10-28T22:28:46.147259+00:00",
+    "method": "dealiased_spherical_harmonic_galerkin",
+    "frame": "rotating",
+    "rotation_axis": "z",
+    "omega": 50.0,
+    "target_degree": 2,
+    "spectral_L": 240,
+    "degrees_of_freedom": 58080,
+    "quadrature": {
+      "nlat": 361,
+      "nlon": 721,
+      "quadratic_dealiasing": true
+    },
+    "time_integrator": "integrating_factor_RK4",
+    "parameters": {
+      "L": 240,
+      "omega": 50.0,
+      "axis": "z",
+      "dt": 0.0005,
+      "tstop": 120.0,
+      "diag_interval": 0.05,
+      "snapshot_interval": 2.0,
+      "backend": "jax",
+      "nu": 0.0,
+      "viscosity": "laplacian_plus_2",
+      "target_degree": 2,
+      "nlo": 4,
+      "nhi": 6,
+      "diag_nmax": 240
+    },
+    "initialization": {
+      "field": "relative_vorticity",
+      "coefficient_source": "shared_file",
+      "normalization_factor": 1.0,
+      "nmax": 6,
+      "basis": "real_orthonormal_condon_shortley",
+      "dropped_c00": 0.0,
+      "coefficient_sha256": "79f1c7fb85b6ec06cc54270ce8a85229e799974b7f946289132f7f6a43845634",
+      "applied_coefficient_sha256": "79f1c7fb85b6ec06cc54270ce8a85229e799974b7f946289132f7f6a43845634"
+    },
+    "coordinate_conventions": {
+      "diag.bin": "Real streamfunction coefficients in physical axes",
+      "initial.json": "Real vorticity coefficients in physical axes",
+      "spectral_snapshots.npz": "Complex relative-vorticity coefficients in internal coordinates with z aligned to rotation_axis",
+      "checkpoint.npz": "Complex relative-vorticity coefficients in internal coordinates with z aligned to rotation_axis"
+    },
+    "source_sha256": {
+      "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+      "spectral/run.py": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+      "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+      "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+    },
+    "execution": {
+      "note": "Two segments used different GPU allocations; see analysis_view.segments for devices."
+    },
+    "limitations": [
+      "Harmonic Galerkin preserves quadratic invariants before time discretization, not all Euler Casimirs.",
+      "IFRK4 has finite time-integration error; compare step sizes.",
+      "Truncation L and stereographic grid NG are different discretizations; equality of labels or run times is not resolution equivalence."
+    ],
+    "restart": {
+      "parent_run": "shared-mixed456-omega50-jax-l240-t60",
+      "checkpoint_sha256": "b5d3fb09f3a3a9f9edac99dfd90fdf040fee0f86969d01d1869086438d51f496",
+      "parent_metadata_sha256": "6aaf498a085fc656acdbcb7528613ff06ff911722222697c4bb55ec9fcddc212",
+      "parent_time": 60.0,
+      "parent_step": 120000,
+      "parent_turnover_time": 59.99999703154369,
+      "checkpoint_format": "legacy_v0",
+      "parent_source_sha256": {
+        "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+        "spectral/run.py": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+        "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+        "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+      },
+      "compatibility": "Numerical model, representation, initial coefficients, timestep and output cadences unchanged; runner/checkpoint metadata may migrate.",
+      "input_checkpoint": "input-checkpoint.npz"
+    },
+    "finished_at": "2026-10-28T22:37:24.718951+00:00",
+    "solver_status": {
+      "stop_reason": "tstop",
+      "step": 240000,
+      "time": 120.0,
+      "turnover_time": 119.9999827099362,
+      "segment_steps": 120000,
+      "segment_start_time": 60.0,
+      "wall_seconds": 518.5679820699734,
+      "compile_first_advance_seconds": 30.510042169946246,
+      "warm_advance_seconds": 350.9734111997532
+    },
+    "analysis_view": {
+      "kind": "exact_saved_low_degree_segment_concatenation",
+      "simulation_cutoff": 240,
+      "retained_diagnostic_degree": 10,
+      "records": 2401,
+      "absolute_time_start": 0.0,
+      "absolute_time_end": 120.0,
+      "duplicate_endpoint_removed": 60.0,
+      "interpolation": false,
+      "phase_reset": false,
+      "parent_diagnostic_sha256": "d6d47dd16ed353f223f641100ec77981fc41f0f972a1cfc3d1fd4aec1065697d",
+      "continuation_full_diagnostic_sha256": "1ef3b0b148584611eeeecb0b53a5130d5dac0734e6209d629c3f84c115652ef8",
+      "continuation_projected_diagnostic_sha256": "5f515d2c10925dcf0935b54e13b5d473592a07176c74ae813a7084388b04b3f4",
+      "combined_diagnostic_sha256": "1792d889910dbbabd4909c110c3d7ab3abe75ac10c9d3fdbdd8c6cd9781be9e1",
+      "boundary_saved_diagnostic_prefix_byte_identical": true,
+      "boundary_full_spectral_snapshot_array_identical": true,
+      "parent_checkpoint_matches_continuation_input": true,
+      "unchanged_numerical_source_files": [
+        "spectral/core.py",
+        "analysis/science.py",
+        "analysis/initial.py"
+      ],
+      "runner_migration": {
+        "parent_sha256": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+        "continuation_sha256": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+        "description": "Restart-capable runner with unchanged numerical model, timestep, diagnostic/snapshot cadences; nine GPU runner/restart tests passed before continuation."
+      },
+      "segments": [
+        {
+          "run": "shared-mixed456-omega50-jax-l240-t60",
+          "time_start": 0.0,
+          "time_end": 60.0,
+          "records": 1201,
+          "device": [
+            {
+              "platform": "gpu",
+              "kind": "Tesla V100-SXM2-32GB"
+            }
+          ],
+          "source_sha256": {
+            "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+            "spectral/run.py": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+            "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+            "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+          }
+        },
+        {
+          "run": "shared-mixed456-omega50-jax-l240-t120",
+          "time_start": 60.0,
+          "time_end": 120.0,
+          "records": 1201,
+          "device": [
+            {
+              "platform": "gpu",
+              "kind": "NVIDIA H100 80GB HBM3"
+            }
+          ],
+          "source_sha256": {
+            "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+            "spectral/run.py": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+            "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+            "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+          }
+        }
+      ],
+      "description": "Analysis-only view. Every saved scalar and degree0..10 coefficient is copied byte-for-byte; only duplicate t60 is removed. Full simulation and spectral snapshots remain L240. No fitted motion, new integration, resampling or amplitude normalization."
+    },
+    "diagnostic_projection": {
+      "kind": "exact_saved_coefficient_subset",
+      "original_nmax": 240,
+      "retained_nmax": 10,
+      "description": "Analysis-only view. Every saved scalar and degree0..10 coefficient is copied byte-for-byte; only duplicate t60 is removed. Full simulation and spectral snapshots remain L240. No fitted motion, new integration, resampling or amplitude normalization."
+    },
+    "source_audit": {
+      "scope": "All full-degree diagnostic records and all full spectral snapshots checked at source",
+      "records": 1201,
+      "all_finite": true,
+      "partial_bytes": 0,
+      "max_reconstructed_energy_relative_error": 6.8833827526759706e-15,
+      "max_reconstructed_enstrophy_relative_error": 4.6629367034256575e-15,
+      "snapshots": 31,
+      "snapshot_time_start": 60.0,
+      "snapshot_time_end": 120.0,
+      "max_snapshot_energy_relative_error": 6.661338147750939e-16,
+      "max_snapshot_enstrophy_relative_error": 2.220446049250313e-16,
+      "final_snapshot_equals_checkpoint": true,
+      "snapshot_sha256": "9cd284f8e1a676be5d653fc5976be1ce0328b1e22a40607c838a05e0ecb5e453",
+      "checkpoint_sha256": "ec3708a04a1477d2be1991492bb3532677431fc6f58a4954cfeec5d4f02fba7d",
+      "input_checkpoint_sha256": "b5d3fb09f3a3a9f9edac99dfd90fdf040fee0f86969d01d1869086438d51f496",
+      "diagnostic_sha256": "1ef3b0b148584611eeeecb0b53a5130d5dac0734e6209d629c3f84c115652ef8"
+    }
+  },
+  "assessment": "Measured finite-duration run; does not establish asymptotic freezing of P2 psi in the prescribed RH frame.",
+  "records": 2401,
+  "first_time": 0.0,
+  "last_time": 120.0,
+  "last_step": 240000,
+  "turnover_age_integral_urms_dt": 119.9999827099362,
+  "degree": 2,
+  "initial_degree_energy_fraction": 0.0,
+  "final_degree_energy_fraction": 0.0003267188584832019,
+  "max_degree_energy_fraction": 0.007884971107419354,
+  "initial_urms": 0.9999999999999998,
+  "final_urms": 0.9999996455392948,
+  "max_relative_energy_change": 7.089212846376272e-07,
+  "max_relative_enstrophy_change": 0.0009868908091766435,
+  "final_relative_energy_change": -7.089212846755899e-07,
+  "final_relative_enstrophy_change": -0.0009868908091766881,
+  "max_pv_enstrophy_change_over_initial_relative_enstrophy": 0.0009868908086366314,
+  "max_angular_momentum_change": 2.8763082920904817e-12,
+  "max_absolute_circulation": 2.4023127986770535e-12,
+  "max_poisson_relative": 3.4524639073481893e-14,
+  "demodulation_speed": -16.666666666666664,
+  "demodulation_axis": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "moving_frame_test": {
+    "recorded_frame": "rotating",
+    "definition": "Undo only the prescribed RH rotation of P2 psi. Test that projected profile including amplitude; degree one is excluded and monitored separately as a constraint.",
+    "zero_rotation_control": false,
+    "interpretation": "Nonzero prescribed RH rotation is removed without fitting the observed motion."
+  },
+  "coherence_energy_fraction_floor": 1e-06,
+  "initial_leakage_reference_fraction": 0.0,
+  "coherence_resolved_samples": 2400,
+  "coherence": [
+    {
+      "waiting_time": 0.05,
+      "sample_count": 2400,
+      "max_observed_lag": 119.95,
+      "max_distance": 1.9954127592515767,
+      "final_distance": 1.8314270988978738,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.10000000000000002,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 2399.0,
+      "distance_at_one_age": 0.4743037496072561
+    },
+    {
+      "waiting_time": 24.05,
+      "sample_count": 1920,
+      "max_observed_lag": 95.95,
+      "max_distance": 1.9902626993789698,
+      "final_distance": 1.3105539256697494,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.15000000000000213,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 3.9896049896049894,
+      "distance_at_one_age": 1.5377134165459225
+    },
+    {
+      "waiting_time": 48.050000000000004,
+      "sample_count": 1440,
+      "max_observed_lag": 71.94999999999999,
+      "max_distance": 1.9970084228573577,
+      "final_distance": 1.2905857003577557,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.04999999999999716,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 1.4973985431841828,
+      "distance_at_one_age": 1.1958182443695007
+    },
+    {
+      "waiting_time": 72.05,
+      "sample_count": 960,
+      "max_observed_lag": 47.95,
+      "max_distance": 1.9935722704649426,
+      "final_distance": 1.8598971336440433,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.20000000000000284,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 0.6655100624566274,
+      "distance_at_one_age": null
+    },
+    {
+      "waiting_time": 96.05000000000001,
+      "sample_count": 480,
+      "max_observed_lag": 23.94999999999999,
+      "max_distance": 1.9817720715038651,
+      "final_distance": 0.2889332004108021,
+      "exit_distance": 0.5,
+      "first_observed_exit_lag": 0.04999999999999716,
+      "exit_time_right_censored": false,
+      "observed_coherence_lower_bound": null,
+      "max_lag_to_age": 0.24934929724102015,
+      "distance_at_one_age": null
+    }
+  ],
+  "profile_persistence": {
+    "definition": "Unnormalized coefficient difference divided by the waiting-time norm; amplitude changes are retained.",
+    "scope": "Tests only P2 psi. Degree one is excluded and monitored separately through angular momentum; other degrees need not freeze.",
+    "curves": [
+      {
+        "waiting_time": 0.05,
+        "max_observed_lag": 119.95,
+        "max_recorded_frame_distance": 7.533409215533145,
+        "max_prescribed_moving_frame_distance": 7.490447637559088,
+        "final_recorded_frame_distance": 1.8508529190729783,
+        "final_prescribed_moving_frame_distance": 2.297548340209503,
+        "final_amplitude_ratio": 1.4994350710445787
+      },
+      {
+        "waiting_time": 24.05,
+        "max_observed_lag": 95.95,
+        "max_recorded_frame_distance": 2.3400556274793827,
+        "max_prescribed_moving_frame_distance": 2.367601110599485,
+        "final_recorded_frame_distance": 1.2825431622009917,
+        "final_prescribed_moving_frame_distance": 1.0122028595246402,
+        "final_amplitude_ratio": 0.3521718387204755
+      },
+      {
+        "waiting_time": 48.050000000000004,
+        "max_observed_lag": 71.94999999999999,
+        "max_recorded_frame_distance": 4.598453811663915,
+        "max_prescribed_moving_frame_distance": 4.248184099192853,
+        "final_recorded_frame_distance": 0.5935906573579378,
+        "final_prescribed_moving_frame_distance": 1.1709804035326798,
+        "final_amplitude_ratio": 0.7989766988422319
+      },
+      {
+        "waiting_time": 72.05,
+        "max_observed_lag": 47.95,
+        "max_recorded_frame_distance": 2.403680257755732,
+        "max_prescribed_moving_frame_distance": 2.2683902492764236,
+        "final_recorded_frame_distance": 1.1741607307836048,
+        "final_prescribed_moving_frame_distance": 1.2823573167248246,
+        "final_amplitude_ratio": 0.3551812158067896
+      },
+      {
+        "waiting_time": 96.05000000000001,
+        "max_observed_lag": 23.94999999999999,
+        "max_recorded_frame_distance": 3.364419924181879,
+        "max_prescribed_moving_frame_distance": 3.314559474069374,
+        "final_recorded_frame_distance": 1.5455877285865736,
+        "final_prescribed_moving_frame_distance": 0.3587309274190836,
+        "final_amplitude_ratio": 0.7415843661327296
+      }
+    ]
+  },
+  "segments": [
+    {
+      "run": "shared-mixed456-omega50-jax-l240-t60",
+      "time_start": 0.0,
+      "time_end": 60.0,
+      "records": 1201,
+      "device": [
+        {
+          "platform": "gpu",
+          "kind": "Tesla V100-SXM2-32GB"
+        }
+      ],
+      "source_sha256": {
+        "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+        "spectral/run.py": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+        "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+        "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+      }
+    },
+    {
+      "run": "shared-mixed456-omega50-jax-l240-t120",
+      "time_start": 60.0,
+      "time_end": 120.0,
+      "records": 1201,
+      "device": [
+        {
+          "platform": "gpu",
+          "kind": "NVIDIA H100 80GB HBM3"
+        }
+      ],
+      "source_sha256": {
+        "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+        "spectral/run.py": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+        "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+        "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+      }
+    }
+  ],
+  "warnings": [
+    "Demodulation uses prescribed background rotation; an additional degree-one relative flow is not fitted.",
+    "Diagnostic coefficient view retains degrees0..10 from the L240 simulation; the spectrum panel is not the full resolved spectrum."
+  ],
+  "initial_degree1_energy_fraction": 0.0,
+  "final_degree1_energy_fraction": 1.1468962274597294e-26,
+  "max_degree1_energy_fraction": 7.858553240054047e-26,
+  "quadrupole_shape": {
+    "definition": "phi_2(r)=r^T Q r, trace(Q)=0; sorted eigenvalues normalized by the Frobenius norm of Q.",
+    "distance_definition": "Exact minimum normalized coefficient distance over SO(3); prescribed moving-frame coherence is reported separately.",
+    "cubic_invariant_definition": "sqrt(6)*trace(Q^3)/trace(Q^2)^(3/2), in [-1,1].",
+    "final_normalized_eigenvalues": [
+      -0.7990536507696278,
+      0.25414819079981993,
+      0.5449054599698078
+    ],
+    "final_cubic_invariant": -0.813169352190707,
+    "coherence": [
+      {
+        "waiting_time": 0.05,
+        "max_observed_lag": 119.95,
+        "max_orbit_distance": 0.8899335289795397,
+        "final_orbit_distance": 0.7126630219331405,
+        "final_prescribed_moving_frame_distance": 1.8314270988978738,
+        "orbit_distance_at_one_age": 0.043579304531699566
+      },
+      {
+        "waiting_time": 24.05,
+        "max_observed_lag": 95.95,
+        "max_orbit_distance": 0.6292560220236861,
+        "final_orbit_distance": 0.4428320963585271,
+        "final_prescribed_moving_frame_distance": 1.3105539256697494,
+        "orbit_distance_at_one_age": 0.433660418798264
+      },
+      {
+        "waiting_time": 48.050000000000004,
+        "max_observed_lag": 71.94999999999999,
+        "max_orbit_distance": 0.6852784840714344,
+        "final_orbit_distance": 0.136642662655268,
+        "final_prescribed_moving_frame_distance": 1.2905857003577557,
+        "orbit_distance_at_one_age": 0.2816550457048663
+      },
+      {
+        "waiting_time": 72.05,
+        "max_observed_lag": 47.95,
+        "max_orbit_distance": 0.6512591773875039,
+        "final_orbit_distance": 0.172628572278378,
+        "final_prescribed_moving_frame_distance": 1.8598971336440433,
+        "orbit_distance_at_one_age": null
+      },
+      {
+        "waiting_time": 96.05000000000001,
+        "max_observed_lag": 23.94999999999999,
+        "max_orbit_distance": 0.7602071970633048,
+        "final_orbit_distance": 0.020402283254504133,
+        "final_prescribed_moving_frame_distance": 0.2889332004108021,
+        "orbit_distance_at_one_age": null
+      }
+    ]
+  },
+  "segment_join_audit": {
+    "kind": "exact_saved_low_degree_segment_concatenation",
+    "simulation_cutoff": 240,
+    "retained_diagnostic_degree": 10,
+    "records": 2401,
+    "absolute_time_start": 0.0,
+    "absolute_time_end": 120.0,
+    "duplicate_endpoint_removed": 60.0,
+    "interpolation": false,
+    "phase_reset": false,
+    "parent_diagnostic_sha256": "d6d47dd16ed353f223f641100ec77981fc41f0f972a1cfc3d1fd4aec1065697d",
+    "continuation_full_diagnostic_sha256": "1ef3b0b148584611eeeecb0b53a5130d5dac0734e6209d629c3f84c115652ef8",
+    "continuation_projected_diagnostic_sha256": "5f515d2c10925dcf0935b54e13b5d473592a07176c74ae813a7084388b04b3f4",
+    "combined_diagnostic_sha256": "1792d889910dbbabd4909c110c3d7ab3abe75ac10c9d3fdbdd8c6cd9781be9e1",
+    "boundary_saved_diagnostic_prefix_byte_identical": true,
+    "boundary_full_spectral_snapshot_array_identical": true,
+    "parent_checkpoint_matches_continuation_input": true,
+    "unchanged_numerical_source_files": [
+      "spectral/core.py",
+      "analysis/science.py",
+      "analysis/initial.py"
+    ],
+    "runner_migration": {
+      "parent_sha256": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+      "continuation_sha256": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+      "description": "Restart-capable runner with unchanged numerical model, timestep, diagnostic/snapshot cadences; nine GPU runner/restart tests passed before continuation."
+    },
+    "segments": [
+      {
+        "run": "shared-mixed456-omega50-jax-l240-t60",
+        "time_start": 0.0,
+        "time_end": 60.0,
+        "records": 1201,
+        "device": [
+          {
+            "platform": "gpu",
+            "kind": "Tesla V100-SXM2-32GB"
+          }
+        ],
+        "source_sha256": {
+          "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+          "spectral/run.py": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+          "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+          "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+        }
+      },
+      {
+        "run": "shared-mixed456-omega50-jax-l240-t120",
+        "time_start": 60.0,
+        "time_end": 120.0,
+        "records": 1201,
+        "device": [
+          {
+            "platform": "gpu",
+            "kind": "NVIDIA H100 80GB HBM3"
+          }
+        ],
+        "source_sha256": {
+          "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+          "spectral/run.py": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+          "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+          "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+        }
+      }
+    ],
+    "description": "Analysis-only view. Every saved scalar and degree0..10 coefficient is copied byte-for-byte; only duplicate t60 is removed. Full simulation and spectral snapshots remain L240. No fitted motion, new integration, resampling or amplitude normalization."
+  },
+  "diagnostic_coverage": {
+    "simulation_cutoff": 240,
+    "retained_degree": 10,
+    "description": "The complete scalar diagnostics are retained. Degree-two and degree-one metrics use all saved samples. The diagnostic spectrum panel displays only degrees1..10; full L240 snapshots are separately available for field movies."
+  }
+}

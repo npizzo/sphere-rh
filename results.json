@@ -1,7 +1,90 @@
 {
-  "updated_at": "2026-10-28T20:43:59.111096+00:00",
-  "status": "Completed \u03a950 comparison available \u00b7 automatic updates paused",
+  "updated_at": "2026-10-29T00:27:14.770306+00:00",
+  "status": "JAX evolution through t=120 available \u00b7 automatic updates paused",
   "runs": [
+    {
+      "id": "shared-mixed456-omega50-jax-t120-evolution",
+      "label": "Watch the evolution \u00b7 JAX \u03a9=50 through t=120",
+      "status": "completed",
+      "case": "moving_frame",
+      "L": 240,
+      "seed": 7,
+      "omega": 50,
+      "t_final": 120.0,
+      "dt": 0.0005,
+      "summary": "The same JAX trajectory continues from its verified t=60 checkpoint to t=120, with unchanged numerical settings. Degree two remains below 0.8% of the total energy, ending at 0.0327%, and continues changing in its prescribed Rossby\u2013Haurwitz frame. The first video isolates degree two and retains its amplitude; the second shows the full relative-vorticity snapshots. These finite-time results do not establish an asymptotic state. There is no matching Fortran continuation beyond t=60.",
+      "metrics": {
+        "e2_final": {
+          "label": "Final E\u2082/E",
+          "value": 0.03267188584832019,
+          "unit": "%"
+        },
+        "e2_max": {
+          "label": "Maximum E\u2082/E through t=120",
+          "value": 0.7884971107419354,
+          "unit": "%"
+        },
+        "energy_drift": {
+          "label": "Maximum energy drift",
+          "value": 7.089212846376271e-05,
+          "unit": "%"
+        },
+        "pv_drift": {
+          "label": "PV budget drift / initial relative Z",
+          "value": 0.09868908086366314,
+          "unit": "%"
+        }
+      },
+      "videos": [
+        {
+          "src": "shared-mixed456-omega50-jax-t120-evolution--degree2_evolution.mp4",
+          "poster": "shared-mixed456-omega50-jax-t120-evolution--degree2_poster.png",
+          "title": "Degree two \u00b7 recorded frame and prescribed RH frame",
+          "caption": "Every saved degree-two field, at intervals of 0.05, with one fixed color scale shared by both panels. The right panel removes only the prescribed rotation at speed \u221250/3 relative to the recorded rotating frame (+100/3 in the inertial frame). A frozen degree-two profile would remain unchanged on the right, including its amplitude. Degree one is excluded from this test; no rotation rate is fitted."
+        },
+        {
+          "src": "shared-mixed456-omega50-jax-t120-evolution--full_flow_snapshots.mp4",
+          "poster": "shared-mixed456-omega50-jax-t120-evolution--full_flow_poster.png",
+          "title": "Full relative vorticity \u00b7 saved snapshots",
+          "caption": "All 61 saved fields from t=0 to t=120, including all retained degrees, with a fixed color scale. Snapshots are two time units apart and are held briefly without temporal interpolation. This sampling does not resolve the rapid wave propagation: apparent motion between these frames must not be read as its direction or speed. Use the densely sampled degree-two video above for the prescribed-frame comparison."
+        }
+      ],
+      "figures": [
+        {
+          "src": "shared-mixed456-omega50-jax-t120--figure6.png",
+          "alt": "Normalized degree-two coefficients in the prescribed RH frame and degree-two energy fraction through time120",
+          "caption": "Figure 6 quantities over the joined trajectory. The five colored coefficients are normalized; the degree-two energy fraction is small. A fixed normalized pattern would give constant colored curves, but a full freezing test must retain amplitude."
+        },
+        {
+          "src": "shared-mixed456-omega50-jax-t120--profile_persistence.png",
+          "alt": "Temporal changes of the same degree-two profile before and after removing its prescribed rotation through time120",
+          "caption": "Each curve compares this simulation with itself at a chosen waiting time. A fixed profile would keep the middle-panel distance near zero and the right-panel amplitude ratio near one. These are temporal persistence tests, distinct from comparisons between solvers."
+        },
+        {
+          "src": "shared-mixed456-omega50-jax-t120--diagnostics.png",
+          "alt": "Energy, potential-vorticity enstrophy budget and angular momentum checks for the complete time0 to120 trajectory",
+          "caption": "Conservation and angular momentum are checked relative to the original t=0 state. The restart at t=60 preserves the saved field exactly. Angular momentum remains a separate constraint; it is not part of the degree-two persistence test."
+        }
+      ],
+      "links": [
+        {
+          "href": "shared-mixed456-omega50-jax-t120--summary.json",
+          "label": "Run settings and measured diagnostics"
+        },
+        {
+          "href": "shared-mixed456-omega50-jax-t120--segment_audit.json",
+          "label": "Restart and segment continuity checks"
+        },
+        {
+          "href": "shared-mixed456-omega50-jax-t120-evolution--movie_summary.json",
+          "label": "Video sampling, color scales and provenance"
+        },
+        {
+          "href": "shared-mixed456-omega50-jax-t120--profile_persistence.pdf",
+          "label": "Download persistence figure PDF"
+        }
+      ]
+    },
     {
       "id": "shared-mixed456-omega50-comparison",
       "label": "Rotating Figure 6 protocol \u00b7 \u03a9=50 through t=60",
@@ -48,7 +131,7 @@
         {
           "src": "shared-mixed456-omega50-comparison--comparison.png",
           "alt": "Fortran and JAX degree-two energy fractions and amplitude-inclusive profile differences for \u03a950 through time60",
-          "caption": "The energy panel resolves the sub-1% degree-two contribution. Requested harmonic coefficients match; the applied fields differ slightly because Fortran subtracts a discrete compatibility mean and uses different quadrature. Only P\u2082\u03c8 enters profile differences. Degree one is monitored separately."
+          "caption": "This figure compares the two solvers at the same time; it does not test temporal freezing. The recorded-frame and RH-frame discrepancy curves overlap because applying the same rotation to both profiles preserves their distance. The error is normalized by the total-flow energy norm, while degree two carries less than 1% of the energy. Requested initial coefficients match, with the disclosed Fortran compatibility and quadrature differences. Only P\u2082\u03c8 enters these profile errors."
         },
         {
           "src": "shared-mixed456-omega50-fortran-ng100-t60--figure6.png",

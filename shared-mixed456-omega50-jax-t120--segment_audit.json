@@ -1,0 +1,67 @@
+{
+  "kind": "exact_saved_low_degree_segment_concatenation",
+  "simulation_cutoff": 240,
+  "retained_diagnostic_degree": 10,
+  "records": 2401,
+  "absolute_time_start": 0.0,
+  "absolute_time_end": 120.0,
+  "duplicate_endpoint_removed": 60.0,
+  "interpolation": false,
+  "phase_reset": false,
+  "parent_diagnostic_sha256": "d6d47dd16ed353f223f641100ec77981fc41f0f972a1cfc3d1fd4aec1065697d",
+  "continuation_full_diagnostic_sha256": "1ef3b0b148584611eeeecb0b53a5130d5dac0734e6209d629c3f84c115652ef8",
+  "continuation_projected_diagnostic_sha256": "5f515d2c10925dcf0935b54e13b5d473592a07176c74ae813a7084388b04b3f4",
+  "combined_diagnostic_sha256": "1792d889910dbbabd4909c110c3d7ab3abe75ac10c9d3fdbdd8c6cd9781be9e1",
+  "boundary_saved_diagnostic_prefix_byte_identical": true,
+  "boundary_full_spectral_snapshot_array_identical": true,
+  "parent_checkpoint_matches_continuation_input": true,
+  "unchanged_numerical_source_files": [
+    "spectral/core.py",
+    "analysis/science.py",
+    "analysis/initial.py"
+  ],
+  "runner_migration": {
+    "parent_sha256": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+    "continuation_sha256": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+    "description": "Restart-capable runner with unchanged numerical model, timestep, diagnostic/snapshot cadences; nine GPU runner/restart tests passed before continuation."
+  },
+  "segments": [
+    {
+      "run": "shared-mixed456-omega50-jax-l240-t60",
+      "time_start": 0.0,
+      "time_end": 60.0,
+      "records": 1201,
+      "device": [
+        {
+          "platform": "gpu",
+          "kind": "Tesla V100-SXM2-32GB"
+        }
+      ],
+      "source_sha256": {
+        "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+        "spectral/run.py": "d4f2386a18d935de4caec2132d435e8a0d80fa34c1bc2cda468d63491a8e561a",
+        "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+        "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+      }
+    },
+    {
+      "run": "shared-mixed456-omega50-jax-l240-t120",
+      "time_start": 60.0,
+      "time_end": 120.0,
+      "records": 1201,
+      "device": [
+        {
+          "platform": "gpu",
+          "kind": "NVIDIA H100 80GB HBM3"
+        }
+      ],
+      "source_sha256": {
+        "spectral/core.py": "3030e124fa20b8eaf84fb4276eb8e64a02b6fef3348e0393a3c1eb733888cf3f",
+        "spectral/run.py": "d66cd97c3600652e2b6949e2735c29b1fa8dd283d6241afe8aceddb403a8d9e7",
+        "analysis/science.py": "616781e4fb4a74a75bba07eb07f6e664a1bdabefd2723746eda031e3f75077c0",
+        "analysis/initial.py": "1b10d7f59f86e38fd43ec55ba99166fc099cd62c5add17211911f4be4b371cce"
+      }
+    }
+  ],
+  "description": "Analysis-only view. Every saved scalar and degree0..10 coefficient is copied byte-for-byte; only duplicate t60 is removed. Full simulation and spectral snapshots remain L240. No fitted motion, new integration, resampling or amplitude normalization."
+}

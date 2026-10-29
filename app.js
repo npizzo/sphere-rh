@@ -59,6 +59,38 @@
     return container;
   }
 
+  function safeMediaUrl(value) {
+    const url = safeUrl(value);
+    return url && new URL(url).origin === new URL(document.baseURI).origin ? url : null;
+  }
+
+  function renderVideo(item) {
+    const url = safeMediaUrl(item.src);
+    if (!url) return null;
+    const container = element('figure', 'result-figure result-video');
+    const title = item.title || 'Simulation evolution';
+    container.append(element('h4', 'video-title', title));
+    const video = element('video');
+    video.src = url;
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.setAttribute('aria-label', title);
+    const poster = safeMediaUrl(item.poster);
+    if (poster) video.poster = poster;
+    video.append(document.createTextNode('Your browser cannot play this video. Use the download link below.'));
+    video.addEventListener('error', () => {
+      container.append(element('div', 'figure-unavailable', 'Video file unavailable. Try the download link.'));
+    }, { once: true });
+    container.append(video);
+    if (item.caption) container.append(element('figcaption', '', item.caption));
+    const download = element('a', 'video-download', 'Download video (MP4)');
+    download.href = url;
+    download.setAttribute('download', '');
+    container.append(download);
+    return container;
+  }
+
   function renderRun(run) {
     const card = element('article', 'run-card');
     const heading = element('div', 'run-heading');
@@ -92,6 +124,16 @@
         metrics.append(metric);
       }
       if (metrics.childElementCount) card.append(metrics);
+    }
+    if (Array.isArray(run.videos) && run.videos.length) {
+      const grid = element('div', 'figure-grid single video-grid');
+      run.videos.forEach(video => {
+        if (video && typeof video === 'object') {
+          const rendered = renderVideo(video);
+          if (rendered) grid.append(rendered);
+        }
+      });
+      if (grid.childElementCount) card.append(grid);
     }
     if (Array.isArray(run.figures) && run.figures.length) {
       const grid = element('div', `figure-grid${run.figures.length === 1 ? ' single' : ''}`);
